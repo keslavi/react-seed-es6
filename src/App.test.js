@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Route} from 'react-router';
-
 import {shallow} from 'enzyme';
 
 import {App} from './App'; //in this case it doesn't matter, but for testing you'll usually want to pull the unconnected component
 
 describe ('App Component', () => {
     const wrapper = shallow(<App/>);
-    it ('should render without crashing', ()=>{
+    it ('should render without crashing', ()=>{   
         expect (wrapper.exists()).toBe(true);
     })
 

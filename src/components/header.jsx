@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -15,10 +15,10 @@ import {
 import './style.css';
 
 export const Header = (props) => {
-    const {menu} = props;
-    // const [isOpen, setIsOpen] = useState(false);
+    const { menu } = props;
+    const [isOpen, setIsOpen] = useState(false);
 
-    // const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => setIsOpen(!isOpen);
 
     return (
         <div>
@@ -42,7 +42,7 @@ export default Header;
 // ********************************************************************
 
 const renderMenu = (items) => {
-    return items.map (item => {
+    return items.map(item => {
         return (
             <NavItem key={item.text}>
                 <Link to={item.link} className="nav-link">
@@ -52,3 +52,7 @@ const renderMenu = (items) => {
         )
     })
 }
+
+/*
+
+*/

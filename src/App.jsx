@@ -22,7 +22,7 @@ export const menu = [
 
 //note: this makes a difference for testing between connected and unconnected components
 //      (in this case they are the same but including for clarity of testing)
-export function App() {
+export const App = () => {
   return (
     <div className="App">
       <Container>
