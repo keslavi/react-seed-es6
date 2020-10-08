@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { store } from './store';
+import { Provider } from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ToastContainer />
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

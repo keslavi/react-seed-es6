@@ -1,0 +1,49 @@
+{
+  "name": "tpawn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "nodemon --exec babel-node ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/register": "^7.8.0",
+    "apollo-server-koa": "^2.9.16",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "co-body": "^6.0.0",
+    "g": "^2.0.1",
+    "graphql": "^14.5.8",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-basic-auth": "^4.0.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-ejs": "^4.3.0",
+    "koa-graphiql": "^1.1.0",
+    "koa-graphql": "^0.8.0",
+    "koa-jwt": "^3.6.0",
+    "koa-logger": "^3.2.1",
+    "koa-morgan": "^1.0.1",
+    "koa-mount": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static-server": "^1.4.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.9",
+    "nodemailer": "^6.4.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}

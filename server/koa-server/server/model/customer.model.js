@@ -1,0 +1,107 @@
+const mongoose = require('mongoose'),
+      Schema = mongoose.Schema;
+
+const CustomerSchema=new Schema ({
+    nameL:{
+      type:String,
+      required:true
+    },
+    nameF:{
+      type:String,
+      required:true
+    },
+    nameM:{
+      type:String,
+    },
+    dob:{
+      type:Number,
+      required:true
+    },
+    ssn:{
+      type:String
+    },
+    customerImage:{ data: Buffer, contentType: String },
+    address:{
+      type:String,
+      required:true
+    },
+    city:{
+      type:String,
+      required:true
+    },
+    state:{
+      type:String,
+      required:true
+    },
+    county:{
+      type:String
+    },
+    zip:{
+      type:String,
+      required:true
+    },
+    phone1:{
+      type:String,
+      required:true
+    },
+    phone2:{
+      type:String,
+    },
+    dlNum:{
+      type:String,
+      required:true
+    },
+    dlState:{
+      type:String,
+      required:true
+    },
+    dlImage:{ data: Buffer, contentType: String },
+    race:{
+      type:String,
+      required:true
+    },
+    sex:{
+      type:String,
+      required:true
+    },
+    height:{
+      type:String,
+    },
+    weight:{
+      type:String,
+    },
+    ref:{
+      type:String,
+    },
+    mAddress:{
+      type:String,
+    },
+    mCity:{
+      type:String,
+    },
+    mState:{
+      type:String,
+    },
+    mZip:{
+      type:String,
+    },
+    mailingDifferent:{
+      type:String,
+    },
+    referralType:{
+      type:String,
+    },
+    businessCode:{
+      type:String,
+      required:true
+    },
+    locationCode:{
+      type:String,
+      required:true
+    },
+    importId:{
+      type:String,
+    }
+});
+
+module.exports = mongoose.model('Customer', CustomerSchema);

@@ -1,21 +1,27 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
-  },
+  "proxy": "http://localhost",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run dev",
+    "dev": "set REACT_APP_CONFIG=dev & react-scripts start",
+    "pl1": "set REACT_APP_CONFIG=pl1 & react-scripts start",
+    "pl2": "set REACT_APP_CONFIG=pl2 & react-scripts start",
+    "prod": "set REACT_APP_CONFIG=prod & react-scripts start",
+    "start0": "cls & clear & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "src/**/*.jsx",
+      "!src/index.js*",
+      "!src/tempPolyfills.js"
+    ]
+  },
+  "private": true,
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -30,5 +36,54 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.2",
+    "@hookform/resolvers": "^0.1.1",
+    "@types/node": "12.12.5",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.3",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "formik": "^2.0.4",
+    "lodash": "^4.17.15",
+    "logger": "0.0.1",
+    "moment": "^2.24.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-final-form": "^6.3.0",
+    "react-hook-form": "^6.8.3",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-toastify": "^5.4.0",
+    "react-widgets": "^4.4.11",
+    "react-widgets-moment": "^4.0.27",
+    "reactstrap": "^8.1.1",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-promise": "^0.6.0",
+    "redux-saga": "^1.1.1",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@types/axios-mock-adapter": "^1.10.0",
+    "@types/enzyme": "^3.10.6",
+    "@types/jest": "^24.0.21",
+    "@types/lodash": "^4.14.161",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.2",
+    "@types/reactstrap": "^8.0.6",
+    "@types/redux-mock-store": "^1.0.2",
+    "@types/redux-promise": "^0.5.29",
+    "axios-mock-adapter": "^1.17.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
+    "mutationobserver-shim": "^0.3.7",
+    "redux-mock-store": "^1.5.4",
+    "redux-promise-middleware": "^6.1.2",
+    "redux-saga-test-plan": "^4.0.0-rc.3"
   }
 }
