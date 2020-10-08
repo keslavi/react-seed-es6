@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Router, Route, Switch } from 'react-router-dom';
+import { Container } from 'reactstrap';
+import { history } from './helpers';
+
 import './App.css';
 
-function App() {
+import Header from './components/header';
+
+import {
+  Home
+} from './pages';
+
+//also used when testing /components/header
+export const menu = [
+  { text: "home", link: "/" },
+  { text: "todo", link: "/todo" },
+  //TODO: add support for submenus
+  //TODO: possibly add role based visibility options
+]
+
+
+//note: this makes a difference for testing between connected and unconnected components
+//      (in this case they are the same but including for clarity of testing)
+export function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Router history={history}>
+          <Header menu={menu}/>
+          <Switch>
+            <Route path='/' component={Home} />
+          </Switch>
+        </Router>
+
+      </Container>
     </div>
   );
 }

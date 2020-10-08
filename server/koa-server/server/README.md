@@ -10,7 +10,10 @@ if you encounter problems compiling, you might have to globally uninstall and re
 - jwt authentication and simple user logging  (but disabled for purposes of todo demo )
 
 
-##mongodb  will need to be configured; see the /config file for more. currently just sitting there waiting.
+## mongodb  
+mongodb will need to be configured if using graphql or authentication; see the /config file for more. currently just sitting there waiting. 
+
+for the moment the routes that init user data and potentially other database items have been left unfinished.
 
 ## TODO Testing
 for simplicity, the todo "database" consists of two json files:
@@ -34,3 +37,5 @@ to test in postman or some restful tester,
 
 you should see todos.json modify on the update statements.
 
+ 
+ 

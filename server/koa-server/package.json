@@ -1,5 +1,5 @@
 {
-  "name": "tpawn",
+  "name": "koa-seed",
   "version": "1.0.0",
   "description": "",
   "main": "./server.js",
