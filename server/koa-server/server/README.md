@@ -19,6 +19,9 @@ for simplicity, the todo "database" consists of two json files:
 
 note that some companies don't implement full rest and perform updates, creates, deletes through a single POST. I'm coding towards that option in both the backend and the front end.
 
+here is the postman link for the collection used for testing: 
+https://www.getpostman.com/collections/6a24df4d7cc7984ac429
+
 to test in postman or some restful tester, 
 
 - open data/todo.json for viewing as it changes
