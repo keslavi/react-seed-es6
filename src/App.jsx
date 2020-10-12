@@ -8,10 +8,12 @@ import './App.css';
 import Header from './components/header';
 
 import {
-  Home
+  Home,
+  Todos,
 } from './pages';
 
 //also used when testing /components/header
+//this keeps the menu and routes in the same location for editing
 export const menu = [
   { text: "home", link: "/" },
   { text: "todo", link: "/todo" },
@@ -29,6 +31,7 @@ export const App = () => {
         <Router history={history}>
           <Header menu={menu}/>
           <Switch>
+            <Route path = '/todo' component={Todos} />
             <Route path='/' component={Home} />
           </Switch>
         </Router>

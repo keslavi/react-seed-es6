@@ -33,10 +33,8 @@ r.get('/', async (ctx, next) => {
     const data = readData();
     const options = readOptions();
 
-    ctx.body = {
-        data,
-        options
-    }
+    ctx.body = data
+
 })
 
 r.post('/', async (ctx, next) => {

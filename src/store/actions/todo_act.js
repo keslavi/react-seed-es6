@@ -46,7 +46,7 @@ export function actTodo_D(values) {
 // List
 export function actTodo_L(values = {}) {
     //redux-saga example... passing the saga action on
-    const ret = { type: ACT.todo.list, payload: values }
+    const ret = { type: ACT.todo.listSaga, payload: values }
     return ret;
 }
 

@@ -52,7 +52,3 @@ const renderMenu = (items) => {
         )
     })
 }
-
-/*
-
-*/

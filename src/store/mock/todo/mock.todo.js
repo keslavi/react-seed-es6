@@ -60,7 +60,7 @@ const todos = [
     },
     {
         "id": 2,
-        "subject": "subject bbb",
+        "subject": "b",
         "body": "body b",
         "status": 2,
         "result": 2,
@@ -84,7 +84,7 @@ export const mockTodo = {
         },
         post: {
             todos: _.mapKeys(todos, 'id'),
-            todo,
+            todo : todo,
             options
         }
     },
@@ -129,31 +129,6 @@ export const mockTodo = {
             status: null,
             result: null,
         },
-        list: [
-            {
-                "id": 1,
-                "subject": "subject a",
-                "body": "body a",
-                "status": 0,
-                "result": 0,
-                "delete": null
-            },
-            {
-                "id": 2,
-                "subject": "subject b",
-                "body": "body b",
-                "status": 2,
-                "result": 2,
-                "delete": null
-            },
-            {
-                "id": 3,
-                "subject": "subject c",
-                "body": "body c",
-                "status": 2,
-                "result": 2,
-                "delete": null
-            }
-        ]
+        list: todos,
     }
 };

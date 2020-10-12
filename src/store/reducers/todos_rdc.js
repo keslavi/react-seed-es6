@@ -1,0 +1,35 @@
+import _ from 'lodash';
+import ACT from '../_action-constants';
+
+export default function (state = {}, action) {
+
+    /*
+     note: returns a flattened array using the id as a key
+     arguably useful when you want to see item.1 ( or item[1] ) instead of playing array games
+     also helps during updates and deletes
+    */
+
+    switch (action.type) {
+        case ACT.todo.create:
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
+        case ACT.todo.retrieve:
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
+        case ACT.todo.update:
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
+        case ACT.todo.delete:
+            return _.omit(state, action.payload)
+        case ACT.todo.list:
+            return _.mapKeys(action.payload, 'id');
+        default:
+            return state;
+    }
+}

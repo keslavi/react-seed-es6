@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "npm run dev",
     "dev": "set REACT_APP_CONFIG=dev & react-scripts start",
