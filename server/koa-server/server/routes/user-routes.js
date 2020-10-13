@@ -1,6 +1,12 @@
 import Router from'koa-router';
 import User from '../model/user.model';
 
+
+
+/* ****************************************************************
+TODO: convert from express to koa and attach
+
+******************************************************************/
 const r = new Router();
 
 r.post('/public/user', async(ctx, next) => {

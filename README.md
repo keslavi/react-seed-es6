@@ -21,7 +21,6 @@ straight javascript seed starter project with redux, notifications, middleware i
  
 
 ## IDE Dependancies
-
  
 
 if using visual studio code, install the latest version, then install the extension: 
@@ -38,26 +37,31 @@ if using visual studio code, install the latest version, then install the extens
 
 ## proxy configuration in Dev
 
- 
 
 in package.json, there is a proxy setting to reduce CORS issues during development. 
 
- 
 
 ## backend
 
+
+by default the project comes with the following backends that have a simple ToDo app:
+
  
+- /server-koa: arguably better than express, support asynchronous calls. If you're more used to .Net this will probably be a pleasant surprise
+    to run: in terminal, navigate to folder then:
+    > npm i
+    > npm start
 
-by default the project comes with two possible backends that have a simple ToDo app:
+    although it's bypassed for this example, note the following features:
+    -- jwt auth capabilities with api for register, reset pass
+    -- graphql path
+    -- mongodb initialation wired in (requires install or connection link to mongodb)
 
- 
+- /server/net-server: (pending completion) run and install for the front end to reach an api 
 
-- /server-net (default): run and install for the front end to reach an api
-
-- /server-express: in a new terminal window, navigate here and >npm start; it's on port 5000
-
-- /server-koa: arguably better than express, support asynchronous calls. (not built, will complete if interest is expressed)
-
+### Backend Testing: 
+ use the following postman public link to test the api independantly of front end:
+ https://www.getpostman.com/collections/6a24df4d7cc7984ac429
  
 
 ## jest unit testing

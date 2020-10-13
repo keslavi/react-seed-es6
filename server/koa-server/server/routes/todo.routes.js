@@ -31,7 +31,7 @@ r.get('/:id', async (ctx, next) => {
 r.get('/', async (ctx, next) => {
 
     const data = readData();
-    const options = readOptions();
+    //const options = readOptions();
 
     ctx.body = data
 

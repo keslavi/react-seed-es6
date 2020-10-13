@@ -13,5 +13,6 @@ root.all('/', async (ctx, next) => {
 })
 
 root.use('/api/todo', todo.routes(), todo.allowedMethods());
+//TODO: complete user routing and DB initialization
 
 export default root;

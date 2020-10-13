@@ -10,7 +10,6 @@ import {
     Col,
     Row,
     Table,
-    //Label,
 } from 'reactstrap';
 
 
@@ -72,9 +71,8 @@ const renderList = (items, options, history) => {
         <div id='hasItems'>
             <Row>
                 <Col xs='12'>
-                    <div className='pull-right'>
-                        {/* <Button onClick={()=>select({id:0})}+</Button> */}
-                        <Button>+</Button>
+                    <div className='float-right'>
+                        <Button id='addItem' color='success' onClick={()=>select({id:0})}>+</Button>
                     </div>
                 </Col>
             </Row>

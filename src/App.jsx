@@ -10,6 +10,7 @@ import Header from './components/header';
 import {
   Home,
   Todos,
+  Todo,
 } from './pages';
 
 //also used when testing /components/header
@@ -31,6 +32,7 @@ export const App = () => {
         <Router history={history}>
           <Header menu={menu}/>
           <Switch>
+          <Route path = '/todo/:id' component={Todo} />
             <Route path = '/todo' component={Todos} />
             <Route path='/' component={Home} />
           </Switch>

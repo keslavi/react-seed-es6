@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { mockOptions as options } from '../mock.options';
+import {mockOptions as options} from '../mock.options';
 
 export const todo = {
     id: 1,
@@ -85,7 +85,7 @@ export const mockTodo = {
         post: {
             todos: _.mapKeys(todos, 'id'),
             todo : todo,
-            options
+            options,
         }
     },
     request: {
