@@ -14,6 +14,7 @@ export const mhttp = new mockAdapter(axios);
 
 const middleware = [saga];
 
+
 /**
  * @description store created with middleware (such as saga)
  */
@@ -22,7 +23,9 @@ export const createMockStore = configureStore(middleware);
  * @description create an empty store
  */
 export const mstore = createMockStore({});
+
 saga.run(rootSaga);
+
 
 
 

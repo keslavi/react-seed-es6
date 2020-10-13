@@ -27,7 +27,10 @@ export function actTodo_R(id = '') {
 
 // Update
 export function actTodo_U(values) {
-    const req = axios.put(`${url}`, values);
+    // Note: a particular backend I'm building towards uses get/post for everything :(
+    // const req = axios.put(`${url}`, values);
+    const req = axios.post(`${url}`, values); 
+
     return {
         type: ACT.todo.update,
         payload: req

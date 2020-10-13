@@ -52,7 +52,7 @@ describe('Todo Component', () => {
         });
     });
 
-    describe('Todos Data Handling', () => {
+    describe('Todo Data Handling', () => {
         // let wrapper = null;
         // beforeEach(()=>{
         //     wrapper = mountComponent((mdata.store.post, 2));
@@ -66,19 +66,13 @@ describe('Todo Component', () => {
             const wrapper = mountComponent(mdata.store.post,2);
 
             expect (wrapper.find('#hasItem').length).toEqual(1);
-            
         });
-        // it('should display data', () => {
-        //     const wrapper = mountComponent((mdata.store.post, 2));
 
-        //     expect(wrapper.find("#hasItem").length).toEqual(1);
+        //TODO: write tests to check validation
 
-        //     //testing the rows returned
-        //     //https://stackoverflow.com/questions/48308734/testing-data-within-table-component-in-react-using-enzyme
+        
 
-        //     // const rows = wrapper.find(".todo-row");
-        //     // expect(rows.length).toEqual(3);
-        // });
+        
     });
 });
 

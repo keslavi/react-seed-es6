@@ -2,7 +2,7 @@ import React from 'react';
 import config from '../config';
 import {clone} from '../helpers';
 
-export const TextAreaDebug = (props) => {
+export const TextareaDebug = (props) => {
     if (!config.debug) return (<span></span>);
 
     const o = clone(props.value || {});
@@ -22,4 +22,4 @@ export const TextAreaDebug = (props) => {
     );
 }
 
-export default TextAreaDebug;
+//export default TextareaDebug;

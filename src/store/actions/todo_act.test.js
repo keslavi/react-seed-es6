@@ -78,6 +78,7 @@ describe("todo actions", () => {
         const values = mdata.response.update;
 
         mhttp.onPut(`${url}`).reply(200, mdata.response.update);
+        mhttp.onPost(`${url}`).reply(200, mdata.response.update);
         mstore.dispatch(actions.actTodo_U(values));
 
         const act = mstore.getActions()[0];
