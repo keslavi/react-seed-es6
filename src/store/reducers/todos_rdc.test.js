@@ -37,9 +37,10 @@ describe('todos reducer', () => {
         pass['5'] = item;
         pass['5'].id = 5;
 
+        // redux promise returns Axios full request... add 'data' property
         const test = rdc(clone(mdata.store.post.todos), {
             type: ACT.todo.create,
-            payload: pass['5']
+            payload: {data:pass['5']}
         });
 
     expect(test).toEqual(pass);
@@ -62,7 +63,7 @@ it('should Retrieve an Item and modify the List ', () => {
     // console.log('*********************');
 
     
-    const test = rdc(state, { type: ACT.todo.retrieve, payload: item });
+    const test = rdc(state, { type: ACT.todo.retrieve, payload: {data: item} });
 
     // console.log('*********************');
     // console.log('** Retrieve List:', JSON.stringify(test, null, 2));
@@ -84,7 +85,7 @@ it('should Update the values of an existing item', () => {
     const pass = clone(state);
     pass['3'] = item;
 
-    const test = rdc(state, { type: ACT.todo.update, payload: item });
+    const test = rdc(state, { type: ACT.todo.update, payload: {data:item} });
 
     // console.log('*********************');
     // console.log('** Update list:', JSON.stringify(test, null, 2));
