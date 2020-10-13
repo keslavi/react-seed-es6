@@ -9,21 +9,23 @@ export default function (state = {}, action) {
      also helps during updates and deletes
     */
 
+
+    //note: redux promise returns the body as .data
     switch (action.type) {
         case ACT.todo.create:
             return {
                 ...state,
-                [action.payload.id]: action.payload
+                [action.payload.data.id]: action.payload.data
             }
         case ACT.todo.retrieve:
             return {
                 ...state,
-                [action.payload.id]: action.payload
+                [action.payload.data.id]: action.payload.data
             }
         case ACT.todo.update:
             return {
                 ...state,
-                [action.payload.id]: action.payload
+                [action.payload.data.id]: action.payload.data
             }
         case ACT.todo.delete:
             return _.omit(state, action.payload)

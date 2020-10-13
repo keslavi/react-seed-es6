@@ -14,7 +14,6 @@ export const mhttp = new mockAdapter(axios);
 
 const middleware = [saga];
 
-
 /**
  * @description store created with middleware (such as saga)
  */

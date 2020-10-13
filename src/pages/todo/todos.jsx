@@ -33,6 +33,8 @@ export const Todos = (props) => {
         )
     }
 
+    console.log ('*******', JSON.stringify(options,null,2));
+    console.log ('*******', JSON.stringify(items,null,2));
     return (
         <div>
             <h3>ToDos</h3>

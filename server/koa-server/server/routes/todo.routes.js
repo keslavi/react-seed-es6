@@ -46,7 +46,7 @@ r.post('/', async (ctx, next) => {
         data = data.filter(function (data) { return data.id !== req.id });
         req.delete = true;
     }
-    else if (req.body.id || 0 !== 0) {
+    else if (req.id || 0 !== 0) {
         console.log('update');
         data
             .map(function (item) {

@@ -63,8 +63,7 @@ export const Todo = (props) => {
         idItem,     //from mapStateToProps via url
         item,       //from mapStateToProps
         options,    //from mapStateToProps for dropdowns
-        history,    //to change to the Retrieve Page
-        actTodo_C,
+        //actTodo_C,
         actTodo_R,
         actTodo_U,
         actTodo_D,
@@ -104,7 +103,7 @@ export const Todo = (props) => {
     return (
         <div id="hasItem">
             (note: doing bare minimum styling with bootstrap for clarity)
-            <br/>strongly recommend abstracting the label/input into a child component
+            <br />strongly recommend abstracting the label/input into a child component
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Row>
                     <Col xs="1">
@@ -151,9 +150,7 @@ export const Todo = (props) => {
                         <Label>Status </Label>
                     </Col>
                     <Col xs="3">
-                        {/* imo better to abstract this to child component; see redux-form-helpers.js for Formik example 
-                  formik example usage: {this.dropdown("result")}
-              */}
+                        {/* imo better to abstract all this into child component*/}
                         <Input
                             type="select"
                             name="status"
@@ -205,7 +202,6 @@ export const Todo = (props) => {
     );
 }
 
-
 const mapStateToProps = (state, ownProps) => {
     return {
         idItem: ownProps.match.params.id,
@@ -215,7 +211,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default connect(mapStateToProps, {
-    actTodo_C,
+    //actTodo_C,  //the backend is doing it all in update
     actTodo_R,
     actTodo_U,
     actTodo_D,
@@ -224,16 +220,3 @@ export default connect(mapStateToProps, {
 //understanding connect is very import, it cleans up code considerably
 //and does away with manual dispatches... actions are wrapped in dispatch automatically
 
-
-
-// ********************************************************************
-// const render = (item, options, history) => {
-//     console.log('TODO:', item);
-//     return (
-//         <div id='hasItem'>
-//             has items
-//             <TextareaDebug value={{ item, options }} />
-
-//         </div>
-//     )
-// }

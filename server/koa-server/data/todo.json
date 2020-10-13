@@ -3,15 +3,15 @@
     "id": 1,
     "subject": "subject a",
     "body": "body a",
-    "status": 0,
-    "result": 0
+    "status": 1,
+    "result": 1
   },
   {
     "id": 2,
-    "subject": "subject bbb",
+    "subject": "subject b",
     "body": "body b",
-    "status": 2,
-    "result": 2
+    "status": "2",
+    "result": "2"
   },
   {
     "id": 3,
@@ -19,12 +19,5 @@
     "body": "body c",
     "status": 2,
     "result": 2
-  },
-  {
-    "id": 4,
-    "subject": "subject b",
-    "body": "body b",
-    "status": "2",
-    "result": "2"
   }
 ]
