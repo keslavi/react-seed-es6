@@ -75,7 +75,6 @@ export const Todo = (props) => {
         actTodo_R(idItem);
 
         return function cleanup(){
-            console.log ('clearing');
             actTodoClearSelected();
         }
         
@@ -89,9 +88,6 @@ export const Todo = (props) => {
 
     const onSubmit = (values) => {
         actTodo_U(values)
-        // sample debugging; intermediate step before saving data
-        // console.log("onSubmit fired");
-        // console.log("submit:", JSON.stringify(values, null, 2));
     };
 
 
@@ -107,7 +103,6 @@ export const Todo = (props) => {
     }
 
     errorNotification(errors);
-    console.log ('errors', errors);
 
     return (
         <div id="hasItem">
@@ -135,6 +130,7 @@ export const Todo = (props) => {
                         <Input
                             type="input"
                             name="subject"
+                            id="subject"
                             defaultValue={item.subject}
                             innerRef={register()}
                         />
@@ -149,6 +145,7 @@ export const Todo = (props) => {
                         <Input
                             type="input"
                             name="body"
+                            id='body'
                             defaultValue={item.body}
                             innerRef={register()}
                         />

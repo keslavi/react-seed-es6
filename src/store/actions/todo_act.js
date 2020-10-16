@@ -20,7 +20,7 @@ export function actTodo_R(id = '') {
 
 
     const api=`${url}/${id}`;
-    console.log('*****actToDo_R.get',api);
+    //console.log('*****actToDo_R.get',api);
     const res = axios.get(api);
 
     return {
