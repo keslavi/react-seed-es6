@@ -99,6 +99,7 @@ export const Todo = (props) => {
     }
 
     errorNotification(errors);
+    console.log ('errors', errors);
 
     return (
         <div id="hasItem">
@@ -191,9 +192,7 @@ export const Todo = (props) => {
                 <Row>
                     <Col xs="1"></Col>
                     <Col xs="3">
-                        <Button type="submit" name="submit" color="primary">
-                            Submit
-                        </Button>
+                        <Button type="submit" name="btnSubmit" id="btnSubmit" color="primary">Submit</Button>
                     </Col>
                 </Row>
             </Form>

@@ -10,7 +10,7 @@
     "prod": "set REACT_APP_CONFIG=prod & react-scripts start",
     "start0": "cls & clear & react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "set REACT_APP_CONFIG=dev & react-scripts test",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -78,6 +78,7 @@
     "@types/reactstrap": "^8.0.6",
     "@types/redux-mock-store": "^1.0.2",
     "@types/redux-promise": "^0.5.29",
+    "async-wait-until": "^1.2.6",
     "axios-mock-adapter": "^1.17.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",

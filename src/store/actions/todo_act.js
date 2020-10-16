@@ -16,7 +16,6 @@ export function actTodo_C(values) {
 // Retrieve
 export function actTodo_R(id = '') {
     // example of redux-promise... the request is resolved in the reducer
-    // best for calls that don't require data manipulation
     const res = axios.get(`${url}/${id}`);
     return {
         type: ACT.todo.retrieve,
