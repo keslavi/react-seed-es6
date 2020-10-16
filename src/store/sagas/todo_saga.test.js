@@ -1,11 +1,10 @@
 import {expectSaga} from 'redux-saga-test-plan';
 import * as sagas from './todo_saga';
-import * as actions from '../actions/todo_act';
 import {ACT} from '../_action-constants';
 import {mockTodo as mdata} from '../mock';
 import config from '../../config';
 
-import {mhttp} from '../mockstore';
+import {mhttp} from '../mockhttp';
 const url = `${config.api}/todo`;
 
 describe ("todo saga", () => {
@@ -14,6 +13,7 @@ describe ("todo saga", () => {
     })
 
     it("should return a list of todos", async()=> {
+        //TODO: switch this to nock
         mhttp.onGet(url).reply(200,mdata.response.list);
 
         const pass = { 

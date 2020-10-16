@@ -1,24 +1,19 @@
 import configureStore from 'redux-mock-store';
-import { compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './sagas';
-import mockAdapter from 'axios-mock-adapter';
+//import rootSaga from './sagas';
 import axios from '../store/_helpers/axios';
-import promise from 'redux-promise';
 import Nock from 'nock';
 
 axios.defaults.adapter = require ('axios/lib/adapters/http');
 
-const saga = createSagaMiddleware();
+//const saga = createSagaMiddleware();
 
 /**
  * @description Mocks http calls
  */
-//export const mhttp = new mockAdapter(axios);
-
 export const nock=Nock;
 
-const middleware = [saga];
+const middleware = [];
 
 /**
  * @description store created with middleware (such as saga)
@@ -31,7 +26,7 @@ export const mstore = createMockStore({});
 
 //export const createMockStore = configureStore([promise,saga]);
 
-saga.run(rootSaga);
+//saga.run(rootSaga);
 
 
 

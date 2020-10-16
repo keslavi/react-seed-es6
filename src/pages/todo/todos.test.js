@@ -7,7 +7,7 @@ import config from '../../config';
 import { mount } from 'enzyme';
 
 import { mockTodo as mdata } from '../../store/mock';
-import { mhttp, createMockStore,mstore } from '../../store/mockstore';
+import { nock, createMockStore,mstore } from '../../store/mockstore';
 import Todos from './todos';
 
 /* 
@@ -18,7 +18,10 @@ const url = `${config.api}/todo`;
 
 
 //mocking router history for selecting items
-mhttp.onGet(url).reply(200, mdata.response.list);
+const scope = nock(url) 
+    .get()
+    .reply(200, mdata.response.list);
+
 const mHistory = history;
 mHistory.push = jest.fn();  //just a function stub to prevent things from blowing up.
 

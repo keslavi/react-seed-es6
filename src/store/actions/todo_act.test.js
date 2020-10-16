@@ -1,6 +1,7 @@
 import * as actions from './todo_act';
 import { ACT } from '../_action-constants';
-import { mhttp, mstore } from '../mockstore';
+import { mstore } from '../mockstore';
+import {mhttp} from '../mockhttp';
 import config from '../../config';
 
 import { mockTodo as mdata } from '../mock';
@@ -8,6 +9,7 @@ import { act } from 'react-dom/test-utils';
 import {clone} from '../../helpers';
 
 const url = `${config.api}/todo`;
+
 mhttp.onGet(url).reply(200, mdata.response.list);
 
 
