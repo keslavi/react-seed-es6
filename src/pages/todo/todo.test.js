@@ -8,7 +8,7 @@ import { clone } from '../../helpers';
 import { act } from "react-dom/test-utils";
 import { history } from '../../helpers';
 import { mockTodo as mdata } from '../../store/mock';
-import { mhttp, createMockStore, mstorePromise as mstore } from '../../store/mockstore';
+import { nock,createMockStore, mstorePromise as mstore } from '../../store/mockstore';
 import config from '../../config';
 import _ from 'lodash';
 import waitUntil from "async-wait-until";
@@ -24,8 +24,8 @@ import axios from 'axios';
 
 //mocking router history for selecting items
 const url = `${config.api}/todo`;// import { mount } from 'enzyme';
-mhttp.onGet(url).reply(200, mdata.response.todo);
-mhttp.onPost(url).reply(200,mdata.response.todo);
+// mhttp.onGet(url).reply(200, mdata.response.todo);
+// mhttp.onPost(url).reply(200,mdata.response.todo);
 
 
 const mount2 = (state, id = 0) => {
@@ -52,19 +52,15 @@ describe('Todo component', () => {
     })
     
     it('should open form when data exists',async done=>{
-        const st = clone(mdata.store.init);
+        const st = clone(mdata.store.post);
 
-        const http=new mockAdapter(axios);
-        http.onGet(`${url}/2`).reply(200,mdata.response.todo);
+        // const scope = nock(url)
+        //     .get(/\/./)
+        //     .reply(mdata.response.post.Todo);
+        
+        
 
         const wrapper = mount2(st,2);
-
-        await(waitUntil(()=>{
-            return !_.isEmpty(wrapper.getByText('Subject'))
-        }));
-        
-        
-
         
         //check  if the form exists
         const test=!_.isEmpty(wrapper.getByText('Subject'));
@@ -247,5 +243,4 @@ describe('Todo component', () => {
 
 //     });
 // });
-
 

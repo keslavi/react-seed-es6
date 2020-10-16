@@ -30,6 +30,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { act } from 'react-dom/test-utils';
 
 const schema = yup.object().shape({
     id: yup.string().required("id is required"),
@@ -70,9 +71,14 @@ export const Todo = (props) => {
         actTodoClearSelected,
     } = props;
 
-
     useEffect(() => {
         actTodo_R(idItem);
+
+        return function cleanup(){
+            console.log ('clearing');
+            actTodoClearSelected();
+        }
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -87,6 +93,8 @@ export const Todo = (props) => {
         // console.log("onSubmit fired");
         // console.log("submit:", JSON.stringify(values, null, 2));
     };
+
+
 
     if (_.isEmpty(item) | _.isEmpty(options)) {
         return (

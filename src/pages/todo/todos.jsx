@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './style.css'
 import _ from 'lodash';
-import { actTodo_L } from '../../store';
+import { actTodoClearSelected, actTodo_L } from '../../store';
 
 import {
     Button,

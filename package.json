@@ -10,7 +10,7 @@
     "prod": "set REACT_APP_CONFIG=prod & react-scripts start",
     "start0": "cls & clear & react-scripts start",
     "build": "react-scripts build",
-    "test": "set REACT_APP_CONFIG=dev & react-scripts test",
+    "test": "set REACT_APP_CONFIG=test & react-scripts test --testURL=http://localhost:5000",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -69,6 +69,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^12.1.8",
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/enzyme": "^3.10.6",
     "@types/jest": "^24.0.21",
@@ -83,6 +84,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
     "mutationobserver-shim": "^0.3.7",
+    "nock": "^13.0.4",
     "redux-mock-store": "^1.5.4",
     "redux-promise-middleware": "^6.1.2",
     "redux-saga-test-plan": "^4.0.0-rc.3"

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import promise from 'redux-promise';
 import createSagaMiddleware from 'redux-saga';
 
@@ -10,14 +10,15 @@ import rootSaga from './sagas';
 
 const saga = createSagaMiddleware();
 
-export const store = createStore(
-    rootReducer,
-    compose(
-        //i don't like having logger running all the time
-        //keep the console clean as possible to assist in debugging
-        applyMiddleware(promise,saga) //, logger)
-    )
-)
+export const store =
+    createStore(
+        rootReducer,
+        compose(
+            //i don't like having logger running all the time
+            //keep the console clean as possible to assist in debugging
+            applyMiddleware(promise, saga) //, logger)
+        )
+    );
 
 saga.run(rootSaga);
 

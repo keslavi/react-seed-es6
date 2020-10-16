@@ -3,6 +3,7 @@ import local from './config';
 import pl1 from './pl1.config';
 import pl2 from './pl2.config';
 import prod from './prod.config';
+import test from './test.config';
 
 const env = (process.env.REACT_APP_CONFIG || '').trim();
 
@@ -18,6 +19,7 @@ export const config =
             : env === 'pl1' ? pl1
                 : env === 'pl2' ? pl2
                     : env === 'prod' ? prod
-                        : dev;
+                        : env === 'test'
+                            ? test : dev
 
 export default config;

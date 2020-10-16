@@ -1,6 +1,7 @@
 import axios from '../_helpers/axios';
 import { ACT } from '../_action-constants';
 import config from '../../config';
+import { rest } from 'lodash';
 
 const url = `${config.api}/todo`;
 
@@ -16,7 +17,12 @@ export function actTodo_C(values) {
 // Retrieve
 export function actTodo_R(id = '') {
     // example of redux-promise... the request is resolved in the reducer
-    const res = axios.get(`${url}/${id}`);
+
+
+    const api=`${url}/${id}`;
+    console.log('*****actToDo_R.get',api);
+    const res = axios.get(api);
+
     return {
         type: ACT.todo.retrieve,
         payload: res
