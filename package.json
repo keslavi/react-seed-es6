@@ -59,7 +59,7 @@
     "react-toastify": "^5.4.0",
     "react-widgets": "^4.4.11",
     "react-widgets-moment": "^4.0.27",
-    "reactstrap": "^8.1.1",
+    "reactstrap": "^8.6.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",

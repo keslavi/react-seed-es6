@@ -22,6 +22,15 @@ export const menu = [
   //TODO: possibly add role based visibility options
 ]
 
+/* NOTE: 
+      if you have chromes react devtools extension (and you surely should), and get the error: 
+      "DevTools failed to load SourceMap: Could not load content...."
+
+      in the inspector window, 
+        - click the gear in the upper right corner
+        - uncheck "Enable JavaScript source maps"
+*/
+
 
 //note: this makes a difference for testing between connected and unconnected components
 //      (in this case they are the same but including for clarity of testing)

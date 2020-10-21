@@ -12,7 +12,6 @@ import { ToastContainer } from 'react-toastify';
 import App from './App';
 import InitializeApp from './components/initState';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
