@@ -12,3 +12,7 @@ code {
     monospace;
 }
 
+.hidden {
+  visibility: hidden;
+  display:none;
+}

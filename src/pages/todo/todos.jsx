@@ -3,7 +3,11 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './style.css'
 import _ from 'lodash';
-import { actTodoClearSelected, actTodo_L } from '../../store';
+import {
+    actTodo_L
+} from '../../store';
+
+import { TextareaDebug } from '../../components';
 
 import {
     Button,
@@ -36,8 +40,8 @@ export const Todos = (props) => {
     return (
         <div>
             <h3>ToDos</h3>
-            {renderList(items,options,history)}
-
+            {renderList(items, options, history)}
+            <TextareaDebug value={{ items, options }} />
         </div>
     )
 }
@@ -47,7 +51,7 @@ export const Todos = (props) => {
 const mapStateToProps = (state) => {
     return {
         items: state.todos,
-        options: state.options
+        options: state.options?.todo
     }
 }
 
@@ -72,7 +76,7 @@ const renderList = (items, options, history) => {
             <Row>
                 <Col xs='12'>
                     <div className='float-right'>
-                        <Button id='addItem' color='success' onClick={()=>select({id:0})}>+</Button>
+                        <Button id='addItem' color='success' onClick={() => select({ id: 0 })}>+</Button>
                     </div>
                 </Col>
             </Row>
@@ -85,7 +89,6 @@ const renderList = (items, options, history) => {
                                 <th>Subject</th>
                                 <th>Status</th>
                                 <th>Result</th>
-                                <th>Body</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,8 +102,8 @@ const renderList = (items, options, history) => {
                                     >
                                         <td>{item.id}</td>
                                         <td>{item.subject}</td>
-                                        <td>{options.todo.status[item.status].text}</td>
-                                        <td>{options.todo.result[item.result].text}</td>
+                                        <td>{options.status[item.status].text}</td>
+                                        <td>{options.result[item.result].text}</td>
                                     </tr>
                                 );
                             })}

@@ -2,16 +2,16 @@ import Router from 'koa-router';
 import fs from 'fs';
 import path from 'path';
 
-const r = new Router({prefix:'/todo'});
+const r = new Router({prefix:'/contact'});
 
 const readData = () => {
-    const x = fs.readFileSync('./data/todo.json', 'utf8');
+    const x = fs.readFileSync('./data/contact.json', 'utf8');
     const ret = JSON.parse(x);
     return ret;
 }
 
 const writeData = (data) => {
-    fs.writeFileSync('./data/todo.json', JSON.stringify(data, null, 2));
+    fs.writeFileSync('./data/contact.json', JSON.stringify(data, null, 2));
 }
 
 const readOptions = () => {
@@ -51,10 +51,11 @@ r.post('/', async (ctx, next) => {
         data
             .map(function (item) {
                 if (item.id == req.id) {
-                    item.subject = req.subject;
-                    item.body = req.body;
-                    item.status = req.status;
-                    item.result = req.result;
+                    item.nameLast = req.nameLast;
+                    item.nameFirst = req.nameFirst;
+                    item.phone = req.phone;
+                    item.typeContact = req.type;
+                    item.comments = req.comments;
                 }
             });
     }
@@ -62,7 +63,7 @@ r.post('/', async (ctx, next) => {
         const idNew = Math.max.apply(Math, data.map(function (o) { return o.id; })) + 1;
         console.log('adding', idNew);
 
-        req.id=idNew;
+        req.id = idNew;
         data.push(req);
     }
 

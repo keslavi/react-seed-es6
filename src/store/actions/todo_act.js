@@ -1,7 +1,6 @@
 import axios from '../_helpers/axios';
 import { ACT } from '../_action-constants';
 import config from '../../config';
-import { rest } from 'lodash';
 
 const url = `${config.api}/todo`;
 

@@ -11,7 +11,7 @@ import schema from './graphql/schema';
 import errorHandler from './middleware/errorhandler';
 import jwt from 'koa-jwt';
 
-import api from './routes/routes';
+import api, {helloWorld} from './routes/';
 import user from './routes/user-routes';
 import auth from './routes/auth';
 
@@ -32,6 +32,7 @@ app
   .use(body())
   //removing auth for the purposes of the react seed
   //.use(jwt({ secret: config.secret }).unless({ path: [/^\/public/] }))
+  .use(helloWorld.routes(),helloWorld.allowedMethods())
   .use(auth.routes())
   .use(auth.allowedMethods())
   .use(api.routes())

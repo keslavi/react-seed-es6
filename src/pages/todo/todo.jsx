@@ -3,13 +3,16 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import './style.css'
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
 import {
-    actTodo_C,
+    //actTodo_C,
     actTodo_R,
     actTodo_U,
-    actTodo_D,
+    //actTodo_D, /TODO: need to implement
     actTodoClearSelected,
 } from '../../store';
+
 
 import {
     Button,
@@ -30,7 +33,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { act } from 'react-dom/test-utils';
 
 const schema = yup.object().shape({
     id: yup.string().required("id is required"),
@@ -67,22 +69,23 @@ export const Todo = (props) => {
         //actTodo_C,
         actTodo_R,
         actTodo_U,
-        actTodo_D,
+        //actTodo_D, //Need To Implement
         actTodoClearSelected,
     } = props;
 
     useEffect(() => {
         actTodo_R(idItem);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 
-        return function cleanup(){
+        return function cleanup() {
             actTodoClearSelected();
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }
-        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //form validation
-    const { register, handleSubmit, watch, errors } = useForm({
+    const { register, handleSubmit, /*watch,*/errors } = useForm({
         resolver: yupResolver(schema),
     });
 
@@ -218,7 +221,7 @@ export default connect(mapStateToProps, {
     //actTodo_C,  //the backend is doing it all in update
     actTodo_R,
     actTodo_U,
-    actTodo_D,
+    //actTodo_D, //TODO:Need to implement
     actTodoClearSelected,
 })(withRouter(Todo));
 //understanding connect is very import, it cleans up code considerably

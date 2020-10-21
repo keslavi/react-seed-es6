@@ -5,20 +5,16 @@ import { Router } from 'react-router-dom';
 import { history } from '../../helpers';
 import config from '../../config';
 import { mount } from 'enzyme';
+import {clone} from '../../helpers';
 
 import { mockTodo as mdata } from '../../store/mock';
-import { nock, createMockStore,mstore } from '../../store/mockstore';
+import { Nock, createMockStore,mstore } from '../../store/mockstore';
 import Todos from './todos';
-
-/* 
-    since saga is used for loading the data, need to mock the store
-*/
 
 const url = `${config.api}/todo`;
 
-
 //mocking router history for selecting items
-const scope = nock(url) 
+const scope = Nock(url) 
     .get()
     .reply(200, mdata.response.list);
 
@@ -45,6 +41,17 @@ describe('Todos Component', () => {
             expect (wrapper.find('#noItems').length).toEqual(1);
             expect(wrapper.find(Todos).length).toEqual(1);
         });
+
+        it('should display no data if options are empty', () => {
+            const state= clone(mdata.store.post);
+            state.options = {};
+
+            const wrapper = mountComponent(mdata.store.init);
+
+            expect (wrapper.find('#noItems').length).toEqual(1);
+            expect(wrapper.find(Todos).length).toEqual(1);
+        });
+        
     });
 
     describe('Todos Data Handling', () => {
