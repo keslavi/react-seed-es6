@@ -1,5 +1,5 @@
 
-# react-16-seet-js 
+# react-seed-es6+ 
 straight javascript seed starter project with redux, notifications, middleware in place
 
 ## current features
