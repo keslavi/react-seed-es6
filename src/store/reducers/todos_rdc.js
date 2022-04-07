@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import ACT from '../_action-constants';
 
-export default function (state = {}, action) {
+const todos = (state = {}, action) => {
 
     /*
      note: returns a flattened array using the id as a key
@@ -35,3 +35,5 @@ export default function (state = {}, action) {
             return state;
     }
 }
+
+export default todos;

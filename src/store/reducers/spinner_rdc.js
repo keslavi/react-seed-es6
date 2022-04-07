@@ -1,6 +1,6 @@
 import {ACT} from '../_action-constants';
 
-export default function (state = {count:0, active:false}, action) {
+const spinner= (state = {count:0, active:false}, action)=> {
     switch (action.type){ 
         case ACT.spinner:
             const count = state.count += action.payload;
@@ -11,4 +11,6 @@ export default function (state = {count:0, active:false}, action) {
             return state;
     }
 }
+
+export default spinner;
 

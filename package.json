@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "zinstall-init-packages": "npm i axios axios-mock-adapter font-awesome jquery lodash moment popper.js react-hook-form react-redux react-router-dom redux redux-logger redux-logger redux-mock-store redux-promise redux-saga redux-saga-test-plan sass yup",
-    "start": "npm run dev",
+    "zinstall-init-packages": "npm i axios axios-mock-adapter font-awesome jquery lodash moment popper.js react-hook-form react-redux react-router-dom redux redux-logger redux-logger redux-mock-store redux-promise redux-saga redux-saga-test-plan sass yup",    "start": "npm run dev",
     "dev": "set REACT_APP_CONFIG=dev & react-scripts start",
     "pl1": "set REACT_APP_CONFIG=pl1 & react-scripts start",
     "pl2": "set REACT_APP_CONFIG=pl2 & react-scripts start",
     "prod": "set REACT_APP_CONFIG=prod & react-scripts start",
     "start0": "cls & clear & react-scripts start",
     "build": "set REACT_APP_CONFIG=prod & react-scripts build",
-    "test": "set REACT_APP_CONFIG=test & react-scripts test --testURL=http://localhost:5000",
+    "test": "set REACT_APP_CONFIG=test & react-scripts test --testURL=http://localhost:5000"
   },
   "eslintConfig": {
     "extends": [

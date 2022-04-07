@@ -1,6 +1,6 @@
 import ACT from '../_action-constants';
 
-export default function (state = {}, action) {
+const todo = (state = {}, action) => {
     switch (action.type) {
         case ACT.todo.create:
             /* falls through */
@@ -16,3 +16,5 @@ export default function (state = {}, action) {
             return state;
     }
 }
+
+export default todo;

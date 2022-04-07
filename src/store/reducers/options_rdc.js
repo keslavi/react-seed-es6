@@ -4,7 +4,7 @@ import ACT from '../_action-constants';
 //import { mockOptions as initialState } from '../mock';
 
 
-export default function (state = {}, action) {
+const options= (state = {}, action) => {
     switch (action.type) {
         case ACT.options.list:
             return action.payload.data;
@@ -12,3 +12,5 @@ export default function (state = {}, action) {
             return state;
     }
 }
+
+export default options;

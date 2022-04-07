@@ -7,7 +7,7 @@ import _ from 'lodash';
 // handle any company specific validation schemas
 
 // potentially changing action byref
-export default function (res) {
+const validate = (res) => {
 
     //keeping as action in case of future modification
     const action = { type: '', payload: {} };
@@ -138,3 +138,5 @@ export function messageHttpError(error) {
     //     }
     //   }"    
 }
+
+export default validate;
