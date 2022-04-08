@@ -9,7 +9,6 @@ const todos = (state = {}, action) => {
      also helps during updates and deletes
     */
 
-
     //note: redux promise returns the body as .data
     switch (action.type) {
         case ACT.todo.create:

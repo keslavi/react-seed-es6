@@ -109,6 +109,24 @@ add Redux store
 
 	in general, I try to use a single api location, even if it's a gateway to other api locations
 
+InitState.jsx
+	InitState is a component that fires various initial actions as needed
+	examples: 
+		actProfile_R   (retrieve the user profile or re-route to a logon)
+		actOptions_R   (retrieve the list of potential options for dropdowns)
+
+notification messages 
+	using React-Toastify, so in /src/index.js we add the toast container
+
+styling: 
+	react easily uses sass (after installing npm i sass)
+	/src/scss is the location to add css framework of choice.
+		(note:material ui handles things differently, but custom css should be applied in here)
+		
+
+
+
+
 
 
 
