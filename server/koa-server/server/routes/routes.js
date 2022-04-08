@@ -1,14 +1,13 @@
 import Router from 'koa-router';
 
-import todo from './todo.routes';
+import task from './task.routes';
 import options from './option.routes';
 import contact from './contact.routes';
 
 export const root = new Router({prefix: '/api'});
 
-
 //TODO: complete user routing and DB initialization
-const routes =[todo,options,contact];
+const routes =[task,options,contact];
 
 root.all('/api/', async (ctx, next) => {
   ctx.body = { message: 'Hello World (api)' }

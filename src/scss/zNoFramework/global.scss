@@ -1,0 +1,33 @@
+.navbar {
+  background-color: #282c34;
+  //min-height: 100vh;
+  max-height: 30px; 
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.navbar ul {
+  list-style-type:none;
+}
+
+.navbar li {
+  display: inline;
+  padding-right: 20px;
+}
+
+.navbar li a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar a:hover{
+  text-decoration: underline;
+}
+
+@import './simple-grid.scss';
+
+

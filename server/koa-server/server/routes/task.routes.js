@@ -2,16 +2,16 @@ import Router from 'koa-router';
 import fs from 'fs';
 import path from 'path';
 
-const r = new Router({prefix:'/todo'});
+const r = new Router({prefix:'/task'});
 
 const readData = () => {
-    const x = fs.readFileSync('./data/todo.json', 'utf8');
+    const x = fs.readFileSync('./data/task.json', 'utf8');
     const ret = JSON.parse(x);
     return ret;
 }
 
 const writeData = (data) => {
-    fs.writeFileSync('./data/todo.json', JSON.stringify(data, null, 2));
+    fs.writeFileSync('./data/task.json', JSON.stringify(data, null, 2));
 }
 
 const readOptions = () => {
