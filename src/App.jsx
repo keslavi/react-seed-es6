@@ -8,7 +8,7 @@ import {menu} from './router';
 function App() {
   return (
     <div>
-      <Header {...menu}/>
+      <Header menu={menu}/>
       <RouterOutlet/>
     </div>
   );

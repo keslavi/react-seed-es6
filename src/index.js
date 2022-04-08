@@ -11,7 +11,7 @@ import './index.css';
 import InitState from 'components/initState/initState';
 import { ToastContainer } from 'react-toastify';
 
-//import App from './App';
+//import App from './App'; (called through Router)
 import Router from './router';
 
 const container = document.getElementById('root');

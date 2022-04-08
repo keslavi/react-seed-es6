@@ -1,9 +1,6 @@
-import React from 'react';
-
-
-import React from 'react';
-import config from '../config';
-import { clone } from '../helpers';
+//import React from 'react';
+import config from 'config';
+import { clone } from 'helpers';
 
 export const TextareaDebug = (props) => {
   if (!config.debug) return (<span></span>);

@@ -26,12 +26,6 @@ export const menu = [
   },
 ]
 
-const Route404 = (props) => {
-  return (
-    <div><h4>Route not Found</h4></div>
-  )
-}
-
 export const Router = (props) => {
   return (
     <BrowserRouter>
@@ -49,6 +43,12 @@ export const Router = (props) => {
         </Route>
       </Routes>
     </BrowserRouter>
+  )
+}
+
+const Route404 = (props) => {
+  return (
+    <div><h4>Route not Found</h4></div>
   )
 }
 
