@@ -123,6 +123,15 @@ styling:
 	/src/scss is the location to add css framework of choice.
 		(note:material ui handles things differently, but custom css should be applied in here)
 		
+Routing: 
+  add routing via react-router-dom@6 
+	https://reactrouter.com/docs/en/v6/getting-started/tutorial
+
+		/router.jsx holds the menu object and routing
+		/index implements routing
+		/app.jsx is called INSIDE router and displays route paths via <Outlet/>
+
+		developers used to index, app paradigm still navigate without thinking, but see the router file.
 
 
 
