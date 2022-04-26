@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
-      "baseUrl": "src"
+      "baseUrl": "src",
+      "paths":{
+        "mockDataRaw/*":["./server/koa-server/data/*"]
+      }
     },
     "include": ["src"]
 }
