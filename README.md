@@ -10,7 +10,7 @@ straight javascript seed starter project with redux, notifications, middleware i
 
 - block ui screen during http calls
 
-- todo displays both redux-saga and redux-promise
+- task displays both redux-saga and redux-promise
 
 - mirror sends requests on a round trip to display error handling
 
@@ -84,11 +84,11 @@ for a quick sample, in home.test.tsx, change the value in "it ('has a header')" 
 
  
 
-For more complex examples that use the redux store and mockups, look at todo*.test.tsx
+For more complex examples that use the redux store and mockups, look at task*.test.tsx
 
  
 
-## todo/requested features
+## task/requested features
 
  
 

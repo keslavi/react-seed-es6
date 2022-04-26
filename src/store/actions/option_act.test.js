@@ -22,7 +22,7 @@ describe("option actions", () => {
     it("should List all values", () => {
         const pass = {
             type: ACT.options.list,
-            payload: mdata //this doesn't need to be as complex as the todo mock
+            payload: mdata //this doesn't need to be as complex as the task mock
         };
 
         //mhttp.onGet(`${url}`).reply(200, mdata);

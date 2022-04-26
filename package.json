@@ -2,6 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "scripts": {
     "zinstall-init-packages": "npm i axios axios-mock-adapter font-awesome jquery lodash moment popper.js react-hook-form react-redux react-router-dom redux redux-logger redux-logger redux-mock-store redux-promise redux-saga redux-saga-test-plan sass yup",
     "start": "npm run dev",

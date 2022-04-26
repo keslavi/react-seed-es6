@@ -1,7 +1,7 @@
 
 import './App.css';
 import { Outlet as RouterOutlet } from 'react-router-dom';
-import { Container,ContainerFullWidth } from 'components';
+import { /*Container,*/ContainerFullWidth } from 'components';
 
 import { Header } from 'components/header';
 import { menu } from './router';

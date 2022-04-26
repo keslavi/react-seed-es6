@@ -5,7 +5,7 @@ import validatedResponse, { messageHttpError } from './axiosValidator';
 
 // axios.defaults.adapter = adapter; //require ('axios/lib/adapters/http');
 
-//todo: put the global request headers for endpoint calls here
+//task: put the global request headers for endpoint calls here
 axios.defaults.headers.common = {
   "Content-Type": "application/json"
 };

@@ -1,20 +1,20 @@
-import * as actions from './todo_act';
+import * as actions from './task_act';
 import { ACT } from '../_action-constants';
 import { mstore } from '../mockstore';
 import {mhttp} from '../mockhttp';
 import config from '../../config';
 
-import { mockTodo as mdata } from '../mock';
+import { mockTask as mdata } from '../mock';
 import { act } from 'react-dom/test-utils';
 import {clone} from '../../helpers';
 
-const url = `${config.api}/todo`;
+const url = `${config.api}/task`;
 
 mhttp.onGet(url).reply(200, mdata.response.list);
 
 
 
-describe("todo actions", () => {
+describe("task actions", () => {
     beforeEach(() => {
         jest.resetAllMocks();
         mstore.clearActions();
@@ -23,7 +23,7 @@ describe("todo actions", () => {
     //Create
     it('should Create a new record', () => {
         //kinda a BS test but best I can do
-        const item= clone(mdata.store.post.todo);
+        const item= clone(mdata.store.post.task);
         item.id=0;
         item.subject='created';
 
@@ -31,12 +31,12 @@ describe("todo actions", () => {
         payload.id=4;
 
         const pass = {
-            type: ACT.todo.create, 
+            type: ACT.task.create, 
             payload
         }
 
         mhttp.onPost(`${url}`).reply(200, pass.payload);
-        mstore.dispatch(actions.actTodo_C(item));
+        mstore.dispatch(actions.actTask_C(item));
 
         const act = mstore.getActions()[0];
 
@@ -52,12 +52,12 @@ describe("todo actions", () => {
     //Retrieve
     it("should retrieve a single record", () => {
         const pass = {
-            type: ACT.todo.retrieve,
+            type: ACT.task.retrieve,
             payload: mdata.response.retrieve
         };
 
         mhttp.onGet(`${url}/1`).reply(200, mdata.response.retrieve);
-        mstore.dispatch(actions.actTodo_R(1));
+        mstore.dispatch(actions.actTask_R(1));
 
         const act = mstore.getActions()[0];
 
@@ -73,7 +73,7 @@ describe("todo actions", () => {
     // Update
     it("should update a record", () => {
         const pass = {
-            type: ACT.todo.update,
+            type: ACT.task.update,
             payload: mdata.response.update
         };
 
@@ -81,7 +81,7 @@ describe("todo actions", () => {
 
         mhttp.onPut(`${url}`).reply(200, mdata.response.update);
         mhttp.onPost(`${url}`).reply(200, mdata.response.update);
-        mstore.dispatch(actions.actTodo_U(values));
+        mstore.dispatch(actions.actTask_U(values));
 
         const act = mstore.getActions()[0];
 
@@ -97,14 +97,14 @@ describe("todo actions", () => {
     // Delete
     it("should delete a record", () => {
         const pass = {
-            type: ACT.todo.delete,
+            type: ACT.task.delete,
             payload: mdata.response.delete
         };
 
         const values = mdata.request.delete;
 
         mhttp.onPost(`${url}`).reply(200, mdata.response.delete);
-        mstore.dispatch(actions.actTodo_D(values));
+        mstore.dispatch(actions.actTask_D(values));
 
         const act = mstore.getActions()[0];        
 

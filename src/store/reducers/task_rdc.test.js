@@ -1,7 +1,7 @@
 import ACT from '../_action-constants';
-import { mockTodo as mdata } from '../mock';
+import { mockTask as mdata } from '../mock';
 
-import rdc from './todo_rdc';
+import rdc from './task_rdc';
 
 //clone just abstracts JSON.parse(JSON.stringify()foo), which creates a deep clone
 //needed because passing variables directly was modifying the test data due to byref
@@ -16,7 +16,7 @@ import { clone } from '../../helpers';
 
 */
 
-describe('todo reducer', () => {
+describe('task reducer', () => {
 
     //Empty
     it('should return an initial empty state', () => {
@@ -32,10 +32,10 @@ describe('todo reducer', () => {
     //Retrieve
     //Update
     it('should return Upserted Item', () => {
-        const pass = clone(mdata.store.post.todo);
+        const pass = clone(mdata.store.post.task);
 
         const test = rdc({}, {
-            type: ACT.todo.create,
+            type: ACT.task.create,
             payload: {data: pass}
         });
 
@@ -45,11 +45,11 @@ describe('todo reducer', () => {
     it('should delete or clear an item', () => {
         const pass= {};
 
-        const payload = clone(mdata.store.post.todo);
+        const payload = clone(mdata.store.post.task);
         payload.id = 5;  //id doesn't matter because the action does all that.
 
-        const test = rdc(clone(mdata.store.post.todo),{
-            type: ACT.todo.clearSelected,
+        const test = rdc(clone(mdata.store.post.task),{
+            type: ACT.task.clearSelected,
             payload
         })
 

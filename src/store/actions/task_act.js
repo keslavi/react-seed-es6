@@ -2,19 +2,19 @@ import axios from '../_helpers/axios';
 import { ACT } from '../_action-constants';
 import config from '../../config';
 
-const url = `${config.api}/todo`;
+const url = `${config.api}/task`;
 
 // Create
-export function actTodo_C(values) {
+export function actTask_C(values) {
     const req = axios.post(`${url}`, values);
     return {
-        type: ACT.todo.create,
+        type: ACT.task.create,
         payload: req
     };
 }
 
 // Retrieve
-export function actTodo_R(id = '') {
+export function actTask_R(id = '') {
     // example of redux-promise... the request is resolved in the reducer
 
 
@@ -23,44 +23,44 @@ export function actTodo_R(id = '') {
     const res = axios.get(api);
 
     return {
-        type: ACT.todo.retrieve,
+        type: ACT.task.retrieve,
         payload: res
     };
 }
 
 
 // Update
-export function actTodo_U(values) {
+export function actTask_U(values) {
     // Note: a particular backend I'm building towards uses get/post for everything :(
     // const req = axios.put(`${url}`, values);
     const req = axios.post(`${url}`, values); 
 
     return {
-        type: ACT.todo.update,
+        type: ACT.task.update,
         payload: req
     };
 }
 
 // Delete
-export function actTodo_D(values) {
+export function actTask_D(values) {
     const req = axios.post(`${url}`, values);
     return {
-        type: ACT.todo.delete,
+        type: ACT.task.delete,
         payload: req
     };
 }
 
 // List
-export function actTodo_L(values = {}) {
+export function actTask_L(values = {}) {
     //redux-saga example... passing the saga action on
-    const ret = { type: ACT.todo.listSaga, payload: values }
+    const ret = { type: ACT.task.listSaga, payload: values }
     return ret;
 }
 
 // Clear Selected
-export function actTodoClearSelected(values = {}) {
+export function actTaskClearSelected(values = {}) {
     return { 
-        type: ACT.todo.clearSelected, 
+        type: ACT.task.clearSelected, 
         payload: {} 
     };
 }

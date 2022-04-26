@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import ACT from '../_action-constants';
 
-const todos = (state = {}, action) => {
+const tasks = (state = {}, action) => {
 
     /*
      note: returns a flattened array using the id as a key
@@ -11,28 +11,28 @@ const todos = (state = {}, action) => {
 
     //note: redux promise returns the body as .data
     switch (action.type) {
-        case ACT.todo.create:
+        case ACT.task.create:
             return {
                 ...state,
                 [action.payload.data.id]: action.payload.data
             }
-        case ACT.todo.retrieve:
+        case ACT.task.retrieve:
             return {
                 ...state,
                 [action.payload.data.id]: action.payload.data
             }
-        case ACT.todo.update:
+        case ACT.task.update:
             return {
                 ...state,
                 [action.payload.data.id]: action.payload.data
             }
-        case ACT.todo.delete:
+        case ACT.task.delete:
             return _.omit(state, action.payload)
-        case ACT.todo.list:
+        case ACT.task.list:
             return _.mapKeys(action.payload, 'id');
         default:
             return state;
     }
 }
 
-export default todos;
+export default tasks;
