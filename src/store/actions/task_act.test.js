@@ -1,6 +1,12 @@
 import * as actions from './task_act';
-import { ACT } from '../_action-constants';
-import { mstore } from '../mockstore';
+
+
+import {
+    ACT, 
+    mockStore,
+    mockOptions as mdata,
+} from 'tester';
+
 import {mhttp} from '../mockhttp';
 import config from '../../config';
 
