@@ -1,6 +1,7 @@
 import {rawTasks as raw} from './tasks-raw';
 import {options} from '../options/options-raw';
 import config from 'config';
+import {transformList} from 'store/reducers/tasks_rdc';
 
 //in case we need to mock the action call
 //'data' is added by axios so we need it to simulate the http call
@@ -13,13 +14,18 @@ export const mockTasks = {
     init: {
       options: {},
       tasks:{},
+      task:{}
     },
-    data: {
+    state: {
       options,
-      tasks: raw,
+      tasks: transformList(raw),
+      task: raw[0]
     }
   },
-  response:raw, //http response
+  response: {
+    list:raw,
+    retrieve:raw[0]
+  }
 };
 
 

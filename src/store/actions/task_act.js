@@ -2,13 +2,13 @@ import axios from '../_helpers/axios';
 import { ACT } from '../_action-constants';
 import config from '../../config';
 
-const url = `${config.api}/todo`;
+const url = `${config.api}/task`;
 
 // Create
 export function actTask_C(values) {
     const req = axios.post(`${url}`, values);
     return {
-        type: ACT.todo.create,
+        type: ACT.task.create,
         payload: req
     };
 }
@@ -23,7 +23,7 @@ export function actTask_R(id = '') {
     const res = axios.get(api);
 
     return {
-        type: ACT.todo.retrieve,
+        type: ACT.task.retrieve,
         payload: res
     };
 }
@@ -36,7 +36,7 @@ export function actTask_U(values) {
     const req = axios.post(`${url}`, values); 
 
     return {
-        type: ACT.todo.update,
+        type: ACT.task.update,
         payload: req
     };
 }
@@ -45,7 +45,7 @@ export function actTask_U(values) {
 export function actTask_D(values) {
     const req = axios.post(`${url}`, values);
     return {
-        type: ACT.todo.delete,
+        type: ACT.task.delete,
         payload: req
     };
 }
@@ -53,14 +53,14 @@ export function actTask_D(values) {
 // List
 export function actTask_L(values = {}) {
     //redux-saga example... passing the saga action on
-    const ret = { type: ACT.todo.listSaga, payload: values }
+    const ret = { type: ACT.task.listSaga, payload: values }
     return ret;
 }
 
 // Clear Selected
 export function actTaskClearSelected(values = {}) {
     return { 
-        type: ACT.todo.clearSelected, 
+        type: ACT.task.clearSelected, 
         payload: {} 
     };
 }

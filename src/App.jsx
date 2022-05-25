@@ -8,7 +8,7 @@ import { menu } from './router';
 
 function App() {
   return (
-    <div>
+    <div data-testid='app'>
       <Header menu={menu} />
       <ContainerFullWidth>
         <RouterOutlet />

@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy-Fails": "http://localhost:5000",
   "scripts": {
     "zinstall-init-packages": "npm i axios axios-mock-adapter font-awesome jquery lodash moment popper.js react-hook-form react-redux react-router-dom redux redux-logger redux-logger redux-mock-store redux-promise redux-saga redux-saga-test-plan sass yup",
     "start": "npm run dev",
@@ -38,9 +38,6 @@
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.3",
     "@mui/styled-engine-sc": "^5.6.1",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "axios-mock-adapter": "^1.20.0",
     "font-awesome": "^4.7.0",
@@ -65,5 +62,10 @@
     "styled-component": "^2.8.0",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0"
   }
 }

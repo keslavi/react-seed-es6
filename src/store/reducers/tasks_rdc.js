@@ -27,12 +27,15 @@ const tasks = (state = {}, action) => {
                 [action.payload.data.id]: action.payload.data
             }
         case ACT.task.delete:
-            return _.omit(state, action.payload)
+            delete state[action.payload.data.id];
+            return state;
+            //return _.omit(state, action.payload.data)
         case ACT.task.list:
-            return _.mapKeys(action.payload, 'id');
+            return transformList(action.payload);
         default:
             return state;
     }
 }
 
+export const transformList=(data)=> _.mapKeys(data, 'id');
 export default tasks;

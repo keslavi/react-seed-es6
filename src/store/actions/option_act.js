@@ -7,7 +7,7 @@ const url = `${config.api}/option`;
 // Retrieve
 export function actOption_L() {
     const api=`${url}`;
-    const res = axios.get(api);
+    const res = axios.get(api)
 
     return {
         type: ACT.options.list,

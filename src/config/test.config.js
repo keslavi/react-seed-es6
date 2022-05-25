@@ -1,7 +1,8 @@
 //doing this to allow comments in json
 
 export const config = { 
-    api: '/api',
+    httpHost:'http://localhost', //for axios
+    api: 'http://localhost/api',
     //api: 'http://localhost:5000/api',
     reduxLogger: false, 
     env: 'local',

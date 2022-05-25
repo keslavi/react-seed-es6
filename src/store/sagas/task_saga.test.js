@@ -1,11 +1,15 @@
 import {expectSaga} from 'redux-saga-test-plan';
 import * as sagas from './task_saga';
-import {ACT} from '../_action-constants';
-import {mockTask as mdata} from '../mock';
-import config from '../../config';
-
-import {mhttp} from '../mockhttp';
-const url = `${config.api}/task`;
+ 
+  import {
+    ACT,
+    config,
+    // clone,
+    // createMockStore,
+    mhttp, //import from here because it's setting extra axios defaults
+  } from "tester";
+  
+  import {mockTasks as mdata} from 'tester';
 
 describe ("task saga", () => {
     beforeEach(()=>{
@@ -13,8 +17,9 @@ describe ("task saga", () => {
     })
 
     it("should return a list of tasks", async()=> {
-        //TODO: switch this to nock
-        mhttp.onGet(url).reply(200,mdata.response.list);
+        mhttp(config.api)
+        .get("/task")
+        .reply(200, mdata.response.list);
 
         const pass = { 
             type:ACT.task.list,

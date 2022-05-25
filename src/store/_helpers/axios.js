@@ -1,9 +1,9 @@
 import axios from "axios";
 import { actSpinner } from "../";
 import validatedResponse, { messageHttpError } from './axiosValidator';
-// import adapter from 'axios/lib/adapters/http';
 
-// axios.defaults.adapter = adapter; //require ('axios/lib/adapters/http');
+// import httpAdapter from 'axios/lib/adapters/http';
+// axios.defaults.adapter = httpAdapter;
 
 //task: put the global request headers for endpoint calls here
 axios.defaults.headers.common = {
