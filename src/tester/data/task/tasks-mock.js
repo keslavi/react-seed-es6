@@ -1,5 +1,5 @@
 import {rawTasks as raw} from './tasks-raw';
-import {options} from '../options/options-raw';
+import options from '../options/options-raw';
 import config from 'config';
 import {transformList} from 'store/reducers/tasks_rdc';
 

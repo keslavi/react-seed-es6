@@ -1,82 +1,79 @@
-import React, {useEffect} from 'react';
-import {useHistory } from 'react-router-dom';
-import {connect} from 'react-redux';
-import _ from 'lodash';
+import React, { useEffect } from "react";
+//https://reactrouter.com/docs/en/v6/getting-started/overview
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import _ from "lodash";
 
-import {actTask_L,actOption_L} from 'store';
+import { actTask_L, actOption_L } from "store";
 
-import { TextareaDebug } from 'components';
+import { TextareaDebug } from "components";
 
 const Tasks0 = (props) => {
-  const {items,options,actTask_L,actOption_L} = props;
+  const { items, option, actTask_L, actOption_L } = props;
 
-  useEffect (()=>{
+  useEffect(() => {
     actTask_L();
-    if (_.isEmpty(options)) {
+    if (_.isEmpty(option)) {
       actOption_L();
     }
-  })
+    //eslint-disable-next-line
+  },[]);
 
-  const renderItems=(items) => {
-    return (
-      <>
-      {items.array.forEach(element => {
-        
-      })}
-      </>
-    )
+  if (_.isEmpty(items) || _.isEmpty(option)) {
+    return <div data-testid="tasks-noitems">Loading...</div>;
+  }
+  
+  const optionText=(option,value)=>{
+    const ret =option.find(x=>x.value===value).text;
+    return ret;
   }
 
-  if (_.isEmpty(items) || _.isEmpty(options)) {
-    return (
-    <div data-testid='tasks-noitems'>
-      Loading...
-    </div>
-    );
-  }
+  const renderItems = (data) => {
+    //was demonstrating usage of a non-array object,
+    //flipping it back for 'normal' display syntax
+    const tasks = Object.keys(items).map((x) => items[x]);
+    return tasks.map((item) => (
+      <tr key={item.id}>
+        <td><Link to={`/tasks/${item.id}`}>{item.id}</Link></td>
+        <td>{item.subject}</td>
+        <td>{item.body}</td>
+        <td>{optionText(option.status,item.status)}</td>
+        <td>{optionText(option.result,item.result)}</td>
+      </tr>
+    ));
+  };
 
   return (
-  <div data-testid='tasks'>
-    <h4>Tasks</h4>
-    <TextareaDebug value={{options,items}}/><br/>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            ID
-          </th>
-          <th>
-            Subject
-          </th>
-          <th>
-            Body
-          </th>
-          <th>
-            Status
-          </th>
-          <th>
-            Result
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
+    <div data-testid="tasks">
+      <h4>Tasks</h4>
+      <TextareaDebug value={{ option, items }} />
+      <br />
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th>Body</th>
+            <th>Status</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>{renderItems(items)}</tbody>
+      </table>
+    </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
-      items: state.tasks,
-      options: state.options?.task
-  }
-}
+    items: state.tasks,
+    option: state.options?.task,
+  };
+};
 
-export const Tasks=connect(mapStateToProps, {
-  actTask_L,actOption_L
+export const Tasks = connect(mapStateToProps, {
+  actTask_L,
+  actOption_L,
 })(Tasks0);
 
 export default Tasks;
-
-

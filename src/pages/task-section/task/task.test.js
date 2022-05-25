@@ -11,10 +11,10 @@ import {mockTasks as mdata } from 'tester';
 
 const mhttp = httpOverride();
 
-import TestComponent from './tasks';
+import TestComponent from './task';
 const mount=mountComponent(TestComponent);
 
-describe('tasks component', () => { 
+describe('task component', () => { 
   it('should render if empty', () => {
 
     //alt if we need more control
@@ -22,14 +22,15 @@ describe('tasks component', () => {
 
     mount(mdata.store.init);    
 
-    screen.getByTestId('tasks-noitems');
+    screen.getByTestId('task-noitem');
   });
 
   describe('has data',()=>{
     it('should display data',()=>{
       mount(mdata.store.state);
 
-      screen.getByText(/subject.+a/);
+      expect(screen.getByDisplayValue(/subject.+a/)).toBeInTheDocument();
+//      screen.getByText(/subject.+a/);
     })
   })
 

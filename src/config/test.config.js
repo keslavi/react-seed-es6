@@ -6,7 +6,7 @@ export const config = {
     //api: 'http://localhost:5000/api',
     reduxLogger: false, 
     env: 'local',
-    debug: true, //flag for developer debugging messages and components
+    debug: false, //flag for developer debugging messages and components
 }
 
 export default config;
