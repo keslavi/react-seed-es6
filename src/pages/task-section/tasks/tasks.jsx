@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 //https://reactrouter.com/docs/en/v6/getting-started/overview
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import _ from "lodash";
+import './style.scss';
 
-import { actTask_L, actOption_L } from "store";
+import { 
+  actTask_L, 
+  actOption_L 
+} from "store";
 
 import { TextareaDebug } from "components";
 
@@ -34,7 +38,7 @@ const Tasks0 = (props) => {
     const tasks = Object.keys(items).map((x) => items[x]);
     return tasks.map((item) => (
       <tr key={item.id}>
-        <td><Link to={`/tasks/${item.id}`}>{item.id}</Link></td>
+        <td><NavLink to={`/tasks/${item.id}`}>{item.id}</NavLink></td>
         <td>{item.subject}</td>
         <td>{item.body}</td>
         <td>{optionText(option.status,item.status)}</td>
@@ -48,6 +52,7 @@ const Tasks0 = (props) => {
       <h4>Tasks</h4>
       <TextareaDebug value={{ option, items }} />
       <br />
+      <NavLink to={`/tasks/0`}>Add New</NavLink>
       <table>
         <thead>
           <tr>

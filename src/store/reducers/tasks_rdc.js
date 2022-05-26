@@ -27,7 +27,9 @@ const tasks = (state = {}, action) => {
                 [action.payload.data.id]: action.payload.data
             }
         case ACT.task.delete:
-            delete state[action.payload.data.id];
+            if (action.payload.data.delete===true){
+                delete state[action.payload.data.id];                
+            }
             return state;
             //return _.omit(state, action.payload.data)
         case ACT.task.list:

@@ -30,7 +30,7 @@ r.get('/:id', async (ctx, next) => {
 
 r.get('/', async (ctx, next) => {
 
-    const data = readData();
+    const data = readData().filter(x=>x.id!==0);
     //const options = readOptions();
 
     ctx.body = data
@@ -43,18 +43,19 @@ r.post('/', async (ctx, next) => {
 
     if (req.delete || '' === 'delete') {
         console.log('delete')
-        data = data.filter(function (data) { return data.id !== req.id });
+        //data = data.filter(function (data) { return data.id !== req.id });
+        data = data.filter(x=>x.id !== req.id );
         req.delete = true;
     }
-    else if (req.id || 0 !== 0) {
-        console.log('update');
+    else if ((req.id || '0') !== '0') {
+        console.log('update',req);
         data
             .map(function (item) {
                 if (item.id == req.id) {
                     item.subject = req.subject;
                     item.body = req.body;
-                    item.status = req.status;
-                    item.result = req.result;
+                    item.status = Number(req.status ||0);
+                    item.result = Number(req.result ||0);
                 }
             });
     }
@@ -63,6 +64,8 @@ r.post('/', async (ctx, next) => {
         console.log('adding', idNew);
 
         req.id=idNew;
+        req.status = Number(req.status ||0);
+        req.result = Number(req.result ||0);
         data.push(req);
     }
 

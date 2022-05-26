@@ -94,14 +94,14 @@ describe("tasks reducer", () => {
     expect(test).toEqual(pass);
   });
 
-  //Retrieve
+  //Delete
   it("should delete an Item from the List ", () => {
-    // note that retrieve affects both the tasks AND the task,
-    // it updates the list with the retrieved item
+    // note that Delete affects both the tasks AND the task,
     const state = clone(mdata.store.state.tasks);
 
     const item = clone(state["2"]);
     item.subject = "deleted";
+    item.delete=true;
 
     const pass=undefined;
 
@@ -114,11 +114,11 @@ describe("tasks reducer", () => {
       payload: { data: item },
     });
 
-    // console.log('*********************');
-    // console.log('** Retrieve List:', JSON.stringify(test, null, 2));
-    // console.log('*********************');
+    console.log('*********************');
+    console.log('** Delete List Item:', JSON.stringify(test, null, 2));
+    console.log('*********************');
 
-    expect(test["2"]).toEqual(pass);
+    expect (test["2"]).toEqual(pass);
   });
 
 

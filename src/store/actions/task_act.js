@@ -1,6 +1,7 @@
 import axios from '../_helpers/axios';
 import { ACT } from '../_action-constants';
 import config from '../../config';
+import { clone } from 'helpers';
 
 const url = `${config.api}/task`;
 
@@ -17,7 +18,6 @@ export function actTask_C(values) {
 export function actTask_R(id = '') {
     // example of redux-promise... the request is resolved in the reducer
 
-
     const api=`${url}/${id}`;
     //console.log('*****actToDo_R.get',api);
     const res = axios.get(api);
@@ -27,7 +27,6 @@ export function actTask_R(id = '') {
         payload: res
     };
 }
-
 
 // Update
 export function actTask_U(values) {
@@ -42,7 +41,9 @@ export function actTask_U(values) {
 }
 
 // Delete
-export function actTask_D(values) {
+export function actTask_D(values0) {
+    const values=clone(values0);
+    values.delete='delete';
     const req = axios.post(`${url}`, values);
     return {
         type: ACT.task.delete,
@@ -58,7 +59,7 @@ export function actTask_L(values = {}) {
 }
 
 // Clear Selected
-export function actTaskClearSelected(values = {}) {
+export function actTask_Clear(values = {}) {
     return { 
         type: ACT.task.clearSelected, 
         payload: {} 

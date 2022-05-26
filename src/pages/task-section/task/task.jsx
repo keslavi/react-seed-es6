@@ -1,26 +1,44 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { ContainerFullWidth, Row, Col, Input } from "components";
-
+import { useForm, useController } from "react-hook-form";
 import _ from "lodash";
 
-import { useForm, useController } from "react-hook-form";
 import { errorNotification,resolver } from "./validation/formvalidation";
-import { actTask_R, actOption_L } from "store";
 
+import { ContainerFullWidth, Row, Col, Input } from "components";
 import { TextareaDebug } from "components";
+import { toast } from "react-toastify";
+
+import { 
+  actTask_C, 
+  actTask_R,
+  actTask_U,
+  actTask_D,
+  actTask_Clear,
+  actOption_L 
+} from "store";
 
 const Task0 = (props) => {
-  const { item, option, actTask_R, actOption_L } = props;
+  const { 
+    item, 
+    option, 
+    actTask_C, 
+    actTask_R,
+    actTask_U,
+    actTask_D,
+    actTask_Clear,    
+    actOption_L  
+  } = props;
   const prm = useParams();
+  const navigate=useNavigate();
 
   const {
     handleSubmit,
     control,
     //watch,
-    //reset,
-    //getValues,
+    reset,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver,
@@ -36,9 +54,37 @@ const Task0 = (props) => {
     //eslint-disable-next-line
   }, []);
 
+  useEffect(()=>{
+    if (!_.isEmpty(item)){
+      reset(item);
+      //toast.info('form reset');
+    }
+  },[item])
+
   const onSubmit = (values) => {
-    console.log(values);
+    //note:  values can't get here prior to form & business validation
+    toast.info(<div>
+      Submit clicked<br/>
+      <textarea rows={5} cols={30} defaultValue={JSON.stringify(values,null,2)}></textarea>
+    </div>);
+
+    if (values.id===0){
+      actTask_C(values)
+    } else {
+      actTask_U(values);
+    }
   };
+
+  const onDelete =()=>{
+    const values= {...item}; 
+    actTask_D(values);
+    navigate('/tasks');
+  }
+
+  const onCancel =()=>{
+    actTask_Clear();
+    navigate('/tasks');
+  }  
 
   if (_.isEmpty(item) || _.isEmpty(option)) {
     return <div data-testid="task-noitem">Loading...</div>;
@@ -56,7 +102,7 @@ const Task0 = (props) => {
   return (
     <div data-testid="task">
       <h4>Task</h4>
-      <TextareaDebug hidden value={{ item, option }} />
+      <TextareaDebug value={{ item, option }} />
       <br />
       <form onSubmit={handleSubmit(onSubmit)}>
         <ContainerFullWidth>
@@ -100,12 +146,14 @@ const Task0 = (props) => {
               {...attributes}
             />
           </Row>
-        </ContainerFullWidth>
-        <Row>
+          <Row>
           <Col>
-            <button type='submit'>Submit</button>
+            <input type='submit' value='Submit'/>&nbsp;&nbsp;
+            <input type='button' onClick={()=>onCancel()} value='Cancel'/>&nbsp;&nbsp;
+            <input type='button' onClick={()=>onDelete()} value='Delete'/>
           </Col>
         </Row>
+        </ContainerFullWidth>
       </form>
     </div>
   );
@@ -119,8 +167,12 @@ const mapStateToProps = (state) => {
 };
 
 export const Task = connect(mapStateToProps, {
+  actTask_C, 
   actTask_R,
-  actOption_L,
+  actTask_U,
+  actTask_D,
+  actTask_Clear,  
+  actOption_L 
 })(Task0);
 
 export default Task;
