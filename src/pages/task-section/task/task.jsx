@@ -6,7 +6,7 @@ import { ContainerFullWidth, Row, Col, Input } from "components";
 import _ from "lodash";
 
 import { useForm, useController } from "react-hook-form";
-
+import { errorNotification,resolver } from "./validation/formvalidation";
 import { actTask_R, actOption_L } from "store";
 
 import { TextareaDebug } from "components";
@@ -18,11 +18,14 @@ const Task0 = (props) => {
   const {
     handleSubmit,
     control,
-    watch,
-    reset,
-    getValues,
+    //watch,
+    //reset,
+    //getValues,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver,
+    //mode:"onChange"
+  });
 
   useEffect(() => {
     actTask_R(prm.id || 1);
@@ -40,6 +43,8 @@ const Task0 = (props) => {
   if (_.isEmpty(item) || _.isEmpty(option)) {
     return <div data-testid="task-noitem">Loading...</div>;
   }
+
+  errorNotification(errors);
 
   const attributes = {
     //viewMode,

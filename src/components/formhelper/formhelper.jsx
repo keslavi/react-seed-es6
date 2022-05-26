@@ -1,4 +1,8 @@
-import React, { useRef, InputRef, useState } from "react";
+import React, { 
+//  useRef, 
+//  InputRef, 
+//  useState 
+} from "react";
 import { Controller } from "react-hook-form";
 import _ from "lodash";
 import { Col } from "components/grid";
@@ -11,10 +15,10 @@ export const Input = (props) => {
     name,
     options,
     multioptions,
-    tooltipId,
+    //tooltipId,
     value,
     control,
-    label,
+    //label,
     onValueChange,
   } = props;
 
@@ -34,8 +38,7 @@ export const Input = (props) => {
     ? CtlAutocompleteMulti
     : CtlTextField;
 
-  //const Ctl=CtlTextField;
-
+  //InputRef={InputRef}
   return (
     <>
       <Col xs={xs || 4}>
@@ -48,7 +51,6 @@ export const Input = (props) => {
             <Ctl
               {...field}
               {...childProps}
-              InputRef={InputRef}
               onChange={(value2) => {
                 field.onChange(value2);
                 if (typeof onValueChange === "function") {
@@ -67,8 +69,10 @@ export default Input;
 
 const cleanParentProps = (props) => {
   const check =
-    "value,control,tooltipId,checkbox,datepicker,viewMode,readOnly,maxLength";
-  const ret = { Inputprops: {}, inputProps: {} };
+    "value,control,useController,tooltipId,checkbox,datepicker,viewMode,readOnly,maxLength";
+
+  //const ret = { Inputprops: {}, inputProps: {} };
+  const ret = {inputprops:{}};
   const propKeys = Object.keys(props);
 
   propKeys.forEach((key) => {
@@ -78,7 +82,7 @@ const cleanParentProps = (props) => {
   });
 
   if (propKeys.includes("maxLength")) {
-    ret.inputProps["maxLength"] = props.maxLength;
+    ret.inputprops["maxLength"] = props.maxLength;
   }
 
   ret["disabled"] = props.viewMode || props.readOnly;

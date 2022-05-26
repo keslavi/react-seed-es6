@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "proxy-Fails": "http://localhost:5000",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "zinstall-init-packages": "npm i axios axios-mock-adapter font-awesome jquery lodash moment popper.js react-hook-form react-redux react-router-dom redux redux-logger redux-logger redux-mock-store redux-promise redux-saga redux-saga-test-plan sass yup",
     "start": "npm run dev",
@@ -35,12 +35,14 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@hookform/resolvers": "^2.8.10",
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.3",
     "@mui/styled-engine-sc": "^5.6.1",
     "axios": "^0.26.1",
     "axios-mock-adapter": "^1.20.0",
     "font-awesome": "^4.7.0",
+    "joi": "^17.6.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.2",

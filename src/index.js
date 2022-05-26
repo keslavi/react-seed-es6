@@ -5,11 +5,13 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "store/store"; //explicitly call, don't have in index
 
-import "scss/index.scss";
-import "./index.css";
+import "./scss/index.scss";
+//import "./index.css";
 
 import InitState from "components/initState/initState";
 import { ToastContainer } from "react-toastify";
+//import '../node_modules/react-toastify/dist/ReactToastify.css';
+//import 'react-toastify/dist/ReactToastify.css';
 
 import { ThemeProvider } from "theme-material";
 
@@ -20,7 +22,17 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <ToastContainer />
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover    
+     />
     <Provider store={store}>
       <ThemeProvider>
         <InitState />
