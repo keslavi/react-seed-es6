@@ -1,12 +1,12 @@
-import ACT from '../_action-constants';
-import { mockOptions as mdata } from '../mock';
+import {
+    ACT,
+    clone,
+  } from "tester";
+  
+import {mockOptions as mdata} from 'tester';
 
 import rdc from './options_rdc';
 import _ from 'lodash';
-
-//clone just abstracts JSON.parse(JSON.stringify()foo), which creates a deep clone
-//needed because passing variables directly was modifying the test data due to byref
-import { clone } from '../../helpers';
 
 describe('options reducer', () => {
 
@@ -15,12 +15,12 @@ describe('options reducer', () => {
         const pass = {};
         const test = rdc({}, { type: 'non related', payload: {} });
 
-        expect(test).toEqual(pass);
+        expect(test).toEqual(pass); 
     });
 
     //List
     it('should return List of items', () => {
-        const pass = clone(mdata);
+        const pass = clone(mdata.store.state.options);
         const test = rdc({}, { type: ACT.options.list, payload: {data:pass} });  //wrap because axios will return as {data: res.body}
 
         expect(test).toEqual(pass);

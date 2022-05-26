@@ -1,30 +1,49 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
 
-import { store } from './store';
-import { Provider } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+import { Provider } from "react-redux";
+import { store } from "store/store"; //explicitly call, don't have in index
 
-import App from './App';
-import InitializeApp from './components/initState';
+import "./scss/index.scss";
+//import "./index.css";
 
-ReactDOM.render(
+import InitState from "components/initState/initState";
+import { ToastContainer } from "react-toastify";
+//import '../node_modules/react-toastify/dist/ReactToastify.css';
+//import 'react-toastify/dist/ReactToastify.css';
+
+import { ThemeProvider } from "theme-material";
+
+//import App from './App'; (called through Router)
+import Router from "./router";
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
+    <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover    
+     />
     <Provider store={store}>
-      <ToastContainer />
-      <App />
-      <InitializeApp />
+      <ThemeProvider>
+        <InitState />
+        {/* APP IS CALLED IN ROUTER*/}
+        <Router />
+      </ThemeProvider>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
-
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

@@ -7,7 +7,7 @@ import _ from 'lodash';
 // handle any company specific validation schemas
 
 // potentially changing action byref
-export default function (res) {
+const validate = (res) => {
 
     //keeping as action in case of future modification
     const action = { type: '', payload: {} };
@@ -122,7 +122,7 @@ export function messageHttpError(error) {
     //     "name": "Error",
     //     "stack": "Error: Request failed with status code 404\n    at createError (http://localhost:3000/static/js/1.chunk.js:4085:15)\n    at settle (http://localhost:3000/static/js/1.chunk.js:4301:12)\n    at XMLHttpRequest.handleLoad (http://localhost:3000/static/js/1.chunk.js:3608:7)",
     //     "config": {
-    //       "url": "/server-net/api/ztodo",
+    //       "url": "/server-net/api/ztask",
     //       "method": "get",
     //       "headers": {},
     //       "transformRequest": [
@@ -138,3 +138,5 @@ export function messageHttpError(error) {
     //     }
     //   }"    
 }
+
+export default validate;

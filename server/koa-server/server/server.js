@@ -6,8 +6,8 @@ import logger from 'koa-morgan';
 import config from './config/main';
 import initDB from './config/database';
 import mount from 'koa-mount';
-import gql from 'koa-graphql';
-import schema from './graphql/schema';
+// import gql from 'koa-graphql';
+// import schema from './graphql/schema';
 import errorHandler from './middleware/errorhandler';
 import jwt from 'koa-jwt';
 
@@ -16,7 +16,7 @@ import user from './routes/user-routes';
 import auth from './routes/auth';
 
 const app = new Koa();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //initDB();
 
@@ -39,10 +39,10 @@ app
   .use(api.allowedMethods())
   .use(user.routes())
   .use(user.allowedMethods())
-  .use(mount('/graphql',gql({
-    schema: schema,
-    graphiql:true
-  })))
+  // .use(mount('/graphql',gql({
+  //   schema: schema,
+  //   graphiql:true
+  // })))
 
 
 app.listen(port)

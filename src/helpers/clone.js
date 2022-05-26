@@ -1,8 +1,14 @@
 
-export const clone = (obj => {
-    // if you get an undefined error you're not passing an object in...
-    const ret = JSON.parse(JSON.stringify(obj));
+/**
+ * 
+ * @description creates a deep clone: alias for json.parse(stringify)
+ */
+export const clone = (obj) => {
+  try {
+    const ret=JSON.parse(JSON.stringify(obj));
     return ret;
-})
-
-export default clone;
+  } catch(e){
+    console.error("***couldn't clone: ", obj);
+    throw e;
+  }
+}

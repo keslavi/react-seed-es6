@@ -1,2 +1,1 @@
-export * from './history';
-export {clone} from './clone';
+export * from './clone';

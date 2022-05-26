@@ -1,29 +1,24 @@
 {
-  "name": "client",
+  "name": "app",
   "version": "0.1.0",
+  "private": true,
   "proxy": "http://localhost:5000",
   "scripts": {
+    "zinstall-init-packages": "npm i axios axios-mock-adapter font-awesome jquery lodash moment popper.js react-hook-form react-redux react-router-dom redux redux-logger redux-logger redux-mock-store redux-promise redux-saga redux-saga-test-plan sass yup",
     "start": "npm run dev",
     "dev": "set REACT_APP_CONFIG=dev & react-scripts start",
     "pl1": "set REACT_APP_CONFIG=pl1 & react-scripts start",
     "pl2": "set REACT_APP_CONFIG=pl2 & react-scripts start",
     "prod": "set REACT_APP_CONFIG=prod & react-scripts start",
     "start0": "cls & clear & react-scripts start",
-    "build": "react-scripts build",
-    "test": "set REACT_APP_CONFIG=test & react-scripts test --testURL=http://localhost:5000",
-    "eject": "react-scripts eject"
+    "build": "set REACT_APP_CONFIG=prod & react-scripts build",
+    "test": "set REACT_APP_CONFIG=test & react-scripts test --testURL=http://localhost:5000"
   },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "src/**/*.jsx",
-      "!src/index.js*",
-      "!src/tempPolyfills.js"
-    ]
-  },
-  "private": true,
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -38,55 +33,41 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime": "^7.7.2",
-    "@hookform/resolvers": "^0.1.1",
-    "@types/node": "12.12.5",
-    "@types/react": "16.9.11",
-    "@types/react-dom": "16.9.3",
-    "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
-    "formik": "^2.0.4",
-    "lodash": "^4.17.15",
-    "logger": "0.0.1",
-    "moment": "^2.24.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-final-form": "^6.3.0",
-    "react-hook-form": "^6.9.2",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "react-toastify": "^5.4.0",
-    "react-widgets": "^4.4.11",
-    "react-widgets-moment": "^4.0.27",
-    "reactstrap": "^8.6.0",
-    "redux": "^4.0.4",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@hookform/resolvers": "^2.8.10",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/material": "^5.6.3",
+    "@mui/styled-engine-sc": "^5.6.1",
+    "axios": "^0.26.1",
+    "axios-mock-adapter": "^1.20.0",
+    "font-awesome": "^4.7.0",
+    "joi": "^17.6.0",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.2",
+    "nock": "^13.2.4",
+    "popper.js": "^1.16.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-hook-form": "^7.29.0",
+    "react-redux": "^7.2.8",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.0",
+    "react-toastify": "^8.2.0",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.4",
     "redux-promise": "^0.6.0",
-    "redux-saga": "^1.1.1",
-    "yup": "^0.29.3"
+    "redux-saga": "^1.1.3",
+    "redux-saga-test-plan": "^4.0.4",
+    "sass": "^1.50.0",
+    "styled-component": "^2.8.0",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/user-event": "^12.1.8",
-    "@types/axios-mock-adapter": "^1.10.0",
-    "@types/enzyme": "^3.10.6",
-    "@types/jest": "^24.0.21",
-    "@types/lodash": "^4.14.161",
-    "@types/react-redux": "^7.1.9",
-    "@types/react-router-dom": "^5.1.2",
-    "@types/reactstrap": "^8.0.6",
-    "@types/redux-mock-store": "^1.0.2",
-    "@types/redux-promise": "^0.5.29",
-    "async-wait-until": "^1.2.6",
-    "axios-mock-adapter": "^1.17.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.4",
-    "mutationobserver-shim": "^0.3.7",
-    "nock": "^13.0.4",
-    "redux-mock-store": "^1.5.4",
-    "redux-promise-middleware": "^6.1.2",
-    "redux-saga-test-plan": "^4.0.0-rc.3"
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0"
   }
 }

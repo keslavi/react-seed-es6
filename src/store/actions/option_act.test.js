@@ -1,42 +1,45 @@
-import * as actions from './option_act';
-import { ACT } from '../_action-constants';
-import { mstore } from '../mockstore';
-import {mhttp} from '../mockhttp';
+import * as action from "./option_act";
+import { clone } from "helpers/clone";
+import config from "config";
 
-import config from '../../config';
-import { mockOptions as mdata } from '../mock';
-import { act } from 'react-dom/test-utils';
-import {clone} from '../../helpers';
+import {
+  ACT,
+  createMockStore,
+  mhttp, //import from here because it's setting extra axios defaults
+  mockOptions as mdata, //CLONE THIS... clone killed intellisense in the .js file
+} from "tester";
 
-const url = `${config.api}/option`;
+const mstore = createMockStore();
+const data_L = mdata.response; //clone(mdata.response); //CLONE or tests might get affected
 
-mhttp.onGet(url).reply(200, mdata);
 
 describe("option actions", () => {
-    beforeEach(() => {
-        jest.resetAllMocks();
-        mstore.clearActions();
-    })
+  beforeEach(() => {
+    jest.resetAllMocks();
+    mstore.clearActions();
+  });
 
-    //Retrieve
-    it("should List all values", () => {
-        const pass = {
-            type: ACT.options.list,
-            payload: mdata //this doesn't need to be as complex as the todo mock
-        };
+  //List
+  it("should List all values", () => {
 
-        //mhttp.onGet(`${url}`).reply(200, mdata);
-        mstore.dispatch(actions.actOption_L(1));
+    const pass = {
+      type: ACT.options.list,
+      payload: data_L,
+    };
 
-        const act = mstore.getActions()[0];
+    mhttp(config.api)
+    .get("/option")
+    .reply(200,data_L );    
+    mstore.dispatch(action.actOption_L(1));
 
-        return act.payload.then(res => {
-            const test = {
-                type: act.type,
-                payload: res.data //stripping out the xtra request info
-            }
-            expect(test).toEqual(pass);
-        });
+    const act = mstore.getActions()[0];
+
+    return act.payload.then((res) => {
+      const test = {
+        type: act.type,
+        payload: res.data,
+      };
+      expect(test).toEqual(pass);
     });
-
+  });
 });
