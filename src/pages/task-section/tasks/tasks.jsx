@@ -50,7 +50,6 @@ const Tasks0 = (props) => {
   return (
     <div data-testid="tasks">
       <h4>Tasks</h4>
-      <TextareaDebug value={{ option, items }} />
       <br />
       <NavLink to={`/tasks/0`}>Add New</NavLink>
       <table>
@@ -65,6 +64,7 @@ const Tasks0 = (props) => {
         </thead>
         <tbody>{renderItems(items)}</tbody>
       </table>
+      <TextareaDebug value={{ option, items }} />
     </div>
   );
 };

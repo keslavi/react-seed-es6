@@ -102,7 +102,6 @@ const Task0 = (props) => {
   return (
     <div data-testid="task">
       <h4>Task</h4>
-      <TextareaDebug value={{ item, option }} />
       <br />
       <form onSubmit={handleSubmit(onSubmit)}>
         <ContainerFullWidth>
@@ -155,6 +154,7 @@ const Task0 = (props) => {
         </Row>
         </ContainerFullWidth>
       </form>
+      <TextareaDebug value={{ item, option }} />
     </div>
   );
 };
