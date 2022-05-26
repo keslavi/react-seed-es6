@@ -6,7 +6,7 @@ straight javascript seed starter project with redux, notifications, middleware i
 
 you need to run both the api backend as well as the main app in order to get data
 
-###Start the backedn server
+**1. Start the backedn server**
 in a terminal
 
 - navigate to server/koa-server
@@ -15,12 +15,12 @@ in a terminal
 
 leave the terminal running :) 
 
-###Start the react app
+**2. Start the react app**
 - at the root:
 - npm i   or yarn install, but there's no yarn specific features at this point
 - npm/yarn start
 
-###Start the unit tester
+**3. Start the unit tester**
 in a new terminal (if in windows, use command prompt, not bash. it formats output better)
 - npm run test
 
