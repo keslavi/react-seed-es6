@@ -6,7 +6,7 @@ straight javascript seed starter project with redux, notifications, middleware i
 
 you need to run both the api backend as well as the main app in order to get data
 
-**1. Start the backedn server**
+**1. Start the backend server**
 in a terminal
 
 - navigate to server/koa-server
