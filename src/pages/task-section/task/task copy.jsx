@@ -1,50 +1,49 @@
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-//import { useForm, useController } from "react-hook-form";
-import { FormContainer } from 'components/formhelper';
+import { useForm, useController } from "react-hook-form";
 import _ from "lodash";
 
-import { resolver } from "./validation/formvalidation";
+import { errorNotification,resolver } from "./validation/formvalidation";
 
-import { Row, Col, Input } from "components";
+import { ContainerFullWidth, Row, Col, Input } from "components";
 import { TextareaDebug } from "components";
 import { toast } from "react-toastify";
 
-import {
-  actTask_C,
+import { 
+  actTask_C, 
   actTask_R,
   actTask_U,
   actTask_D,
   actTask_Clear,
-  actOption_L
+  actOption_L 
 } from "store";
 
 const Task0 = (props) => {
-  const {
-    item,
-    option,
-    actTask_C,
+  const { 
+    item, 
+    option, 
+    actTask_C, 
     actTask_R,
     actTask_U,
     actTask_D,
-    actTask_Clear,
-    actOption_L
+    actTask_Clear,    
+    actOption_L  
   } = props;
   const prm = useParams();
-  const navigate = useNavigate();
+  const navigate=useNavigate();
 
-  // const {
-  //   handleSubmit,
-  //   control,
-  //   //watch,
-  //   reset,
-  //   getValues,
-  //   formState: { errors },
-  // } = useForm({
-  //   resolver,
-  //   //mode:"onChange"
-  // });
+  const {
+    handleSubmit,
+    control,
+    //watch,
+    reset,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    resolver,
+    //mode:"onChange"
+  });
 
   useEffect(() => {
     actTask_R(prm.id || 1);
@@ -55,54 +54,64 @@ const Task0 = (props) => {
     //eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    if (!_.isEmpty(item)) {
-      //reset(item);
+  useEffect(()=>{
+    if (!_.isEmpty(item)){
+      reset(item);
       //toast.info('form reset');
     }
-  }, [item])
+  },[item])
 
-  const onSubmitSuccess = (values) => {
+  const onSubmit = (values) => {
     //note:  values can't get here prior to form & business validation
     toast.info(<div>
-      Submit clicked<br />
-      <textarea rows={5} cols={30} defaultValue={JSON.stringify(values, null, 2)}></textarea>
+      Submit clicked<br/>
+      <textarea rows={5} cols={30} defaultValue={JSON.stringify(values,null,2)}></textarea>
     </div>);
 
-    if (values.id === 0) {
+    if (values.id===0){
       actTask_C(values)
     } else {
       actTask_U(values);
     }
   };
 
-  const onDelete = () => {
-    const values = { ...item };
+  const onDelete =()=>{
+    const values= {...item}; 
     actTask_D(values);
     navigate('/tasks');
   }
 
-  const onCancel = () => {
+  const onCancel =()=>{
     actTask_Clear();
     navigate('/tasks');
-  }
+  }  
 
   if (_.isEmpty(item) || _.isEmpty(option)) {
     return <div data-testid="task-noitem">Loading...</div>;
   }
 
-  //errorNotification(errors);
+  errorNotification(errors);
+
+  const attributes = {
+    //viewMode,
+    useController,
+    control,
+    //onValueChange
+  };
 
   return (
     <div data-testid="task">
       <h4>Task</h4>
       <br />
-      <FormContainer onSubmitSuccess={onSubmitSuccess} resolver={resolver} defaultValues={item}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <ContainerFullWidth>
           <Row>
             {/* <Col is INSIDE Input> */}
-            <Input
-              name="id"
-              label="Id"
+            <Input 
+              name="id" 
+              label="Id" 
+              value={item.id} 
+              {...attributes} 
             />
           </Row>
           <Row>
@@ -110,36 +119,41 @@ const Task0 = (props) => {
             <Input
               name="subject"
               label="Subject"
+              value={item.subject}
+              {...attributes}
             />
             <Input
               name="body"
               label="Body"
+              value={item.body}
+              {...attributes}
             />
           </Row>
           <Row>
-            <Input
-              select
+          <Input
               name="status"
               label="Status"
               value={item.status}
               options={option.status}
+              {...attributes}
             />
             <Input
-              select
               name="result"
               label="Result"
               value={item.result}
               options={option.result}
+              {...attributes}
             />
           </Row>
           <Row>
-            <Col>
-              <input type='submit' value='Submit' />&nbsp;&nbsp;
-              <input type='button' onClick={() => onCancel()} value='Cancel' />&nbsp;&nbsp;
-              <input type='button' onClick={() => onDelete()} value='Delete' />
-            </Col>
-          </Row>
-      </FormContainer>
+          <Col>
+            <input type='submit' value='Submit'/>&nbsp;&nbsp;
+            <input type='button' onClick={()=>onCancel()} value='Cancel'/>&nbsp;&nbsp;
+            <input type='button' onClick={()=>onDelete()} value='Delete'/>
+          </Col>
+        </Row>
+        </ContainerFullWidth>
+      </form>
       <TextareaDebug value={{ item, option }} />
     </div>
   );
@@ -153,12 +167,12 @@ const mapStateToProps = (state) => {
 };
 
 export const Task = connect(mapStateToProps, {
-  actTask_C,
+  actTask_C, 
   actTask_R,
   actTask_U,
   actTask_D,
-  actTask_Clear,
-  actOption_L
+  actTask_Clear,  
+  actOption_L 
 })(Task0);
 
 export default Task;

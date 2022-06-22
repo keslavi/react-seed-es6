@@ -53,7 +53,7 @@
     "react-hook-form": "^7.29.0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.0",
+    "react-scripts": "5.0.1",
     "react-toastify": "^8.2.0",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.4",

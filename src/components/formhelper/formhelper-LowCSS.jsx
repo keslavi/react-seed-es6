@@ -1,13 +1,14 @@
-import React, {forwardRef,
-  //  useRef, 
-  //  InputRef, 
-  //  useState 
+import React, { 
+//  useRef, 
+//  InputRef, 
+//  useState 
 } from "react";
 import { Controller } from "react-hook-form";
 import _ from "lodash";
 import { Col } from "components/grid";
 
-import { TextField, MenuItem,Autocomplete} from '@mui/material'
+import { TextField, TextFieldProps } from '@mui/material'
+
 
 export const Input = (props) => {
   const {
@@ -31,17 +32,16 @@ export const Input = (props) => {
   const Ctl = datepicker
     ? CtlDate
     : checkbox
-      ? CtlCheckbox
-      : select
-        ? CtlSelect
-        : !_.isEmpty(options)
-          ? CtlAutocomplete
-          : !_.isEmpty(multioptions)
-            ? CtlAutocompleteMulti
-            : CtlTextField;
+    ? CtlCheckbox
+    : select
+    ? CtlSelect
+    : !_.isEmpty(options)
+    ? CtlAutocomplete
+    : !_.isEmpty(multioptions)
+    ? CtlAutocompleteMulti
+    : CtlTextField;
 
   //InputRef={InputRef}
-  //render={({ field }) => (
   return (
     <>
       <Col xs={xs || 4}>
@@ -50,7 +50,7 @@ export const Input = (props) => {
           defaultValue={value}
           value={value}
           control={control}
-          render={({ field, fieldState }) => (
+          render={({ field }) => (
             <Ctl
               {...field}
               {...childProps}
@@ -75,7 +75,7 @@ const cleanParentProps = (props) => {
     "value,control,useController,tooltipId,checkbox,datepicker,viewMode,readOnly,maxLength";
 
   //const ret = { Inputprops: {}, inputProps: {} };
-  const ret = { inputprops: {} };
+  const ret = {inputprops:{}};
   const propKeys = Object.keys(props);
 
   propKeys.forEach((key) => {
@@ -90,79 +90,19 @@ const cleanParentProps = (props) => {
 
   ret["disabled"] = props.viewMode || props.readOnly;
 
-  ret.size="small";
-
   return ret;
 };
 
-
-
-// forwardRef warnings: https://mui.com/material-ui/guides/composition/
-const CtlTextField = forwardRef((props,ref) => {
-  const {
-    name,
-    //label,
-    value,
-    onChange,
-    onBlur,
-    type,
-    ...rest
-  } = props;
-
+const CtlTextField = (props) => {
+  const label = props.label || props.name;
   return (
     <>
-      <TextField
-        {...rest}
-        ref={ref}
-        name={name}
-        value={value ?? ''}
-        onChange={onChange}
-        onBlur={onBlur}
-        type={type}
-      />
+      <label>{label}</label>
+      <br />
+      <input {...props} />
     </>
   );
-});
-
-
-const CtlSelect = forwardRef((props,ref) => {
-  const {
-    name,
-    //label,
-    value,
-    onChange,
-    onBlur,
-    type,
-    options,
-    ...rest
-  } = props;
-
-  if (type === 'number' && typeof value !== 'undefined') {
-    rest.InputLabelProps = rest.InputLabelProps || {}
-    rest.InputLabelProps.shrink = true
-  }
-
-  return (
-    <>
-      <TextField
-        select
-        {...rest}
-        ref={ref}
-        name={name}
-        value={value ?? ''}
-        onChange={onChange}
-        onBlur={onBlur}
-        type={type}
-      >
-        {options.map((o) => (
-          <MenuItem key={`status${o.value}`} value={o.value}>
-            {o.text}
-          </MenuItem>
-        ))}        
-      </TextField>
-    </>
-  );
-});
+};
 
 
 const CtlDate = (props) => {
@@ -171,7 +111,9 @@ const CtlDate = (props) => {
 const CtlCheckbox = (props) => {
   return <span>not implemented</span>;
 };
-
+const CtlSelect = (props) => {
+  return <span>not implemented</span>;
+};
 const CtlAutocomplete = (props) => {
   const label = props.label || props.name;
   const options = props.options;
@@ -182,8 +124,8 @@ const CtlAutocomplete = (props) => {
       <br />
       <select {...props}>
         {options.map((o) => (
-          <option
-            key={o.value}
+          <option 
+            key={o.value} 
             value={o.value}
           >
             {o.text}

@@ -1,8 +1,18 @@
+import {Container as ContainerMUI} from '@mui/material';
 
 export const Container = (props) => {
-  return <div className="container">{props.children}</div>
+  return (
+    <ContainerMUI>
+      {props.children}
+    </ContainerMUI>
+  )
 }
 
 export const ContainerFullWidth = (props) =>{
-  return <div className="container-full-width">{props.children}</div>
+
+  return (
+    <ContainerMUI>
+      {props.children}
+    </ContainerMUI>
+  )
 }
