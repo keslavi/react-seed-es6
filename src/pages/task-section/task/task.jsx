@@ -133,7 +133,7 @@ const Task0 = (props) => {
             />
           </Row>
           <Row>
-            <Col>
+            <Col xs={12}>
               <input type='submit' value='Submit' />&nbsp;&nbsp;
               <input type='button' onClick={() => onCancel()} value='Cancel' />&nbsp;&nbsp;
               <input type='button' onClick={() => onDelete()} value='Delete' />

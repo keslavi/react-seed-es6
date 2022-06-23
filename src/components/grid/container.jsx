@@ -1,18 +1,19 @@
-import {Container as ContainerMUI} from '@mui/material';
+//import {Container as ContainerMUI} from '@mui/material';
+import Box from '@mui/material/Box';
 
 export const Container = (props) => {
   return (
-    <ContainerMUI>
+    <Box>
       {props.children}
-    </ContainerMUI>
+    </Box>
   )
 }
 
 export const ContainerFullWidth = (props) =>{
 
   return (
-    <ContainerMUI>
+    <Box>
       {props.children}
-    </ContainerMUI>
+    </Box>
   )
 }
