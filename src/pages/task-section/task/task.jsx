@@ -10,25 +10,40 @@ import { ContainerFullWidth, Row, Col, Input } from "components";
 import { TextareaDebug } from "components";
 import { toast } from "react-toastify";
 
+/*
+  code exercise: 
+  add a subtask section from the store:  
+    add a button below submit
+    when button below submit is clicked, 
+      call the subtask action
+      display results in a table
+
+      bonus: 
+        use the option object to convert the subtask status to it's lookup value
+          (you can view the option object in TextAreaDebug)
+        format the date as mm/dd/yyyy
+*/
+
 import { 
   actTask_C, 
   actTask_R,
   actTask_U,
   actTask_D,
   actTask_Clear,
-  actOption_L 
+  actOption_L,
 } from "store";
 
 const Task0 = (props) => {
   const { 
-    item, 
+    item,
+    subtasks,     
     option, 
     actTask_C, 
     actTask_R,
     actTask_U,
     actTask_D,
     actTask_Clear,    
-    actOption_L  
+    actOption_L,
   } = props;
   const prm = useParams();
   const navigate=useNavigate();
@@ -38,7 +53,7 @@ const Task0 = (props) => {
     control,
     //watch,
     reset,
-    getValues,
+    //getValues,
     formState: { errors },
   } = useForm({
     resolver,
@@ -149,12 +164,11 @@ const Task0 = (props) => {
           <Col>
             <input type='submit' value='Submit'/>&nbsp;&nbsp;
             <input type='button' onClick={()=>onCancel()} value='Cancel'/>&nbsp;&nbsp;
-            <input type='button' onClick={()=>onDelete()} value='Delete'/>
+            <input type='button' onClick={()=>onDelete()} value='Delete'/>&nbsp;&nbsp;
           </Col>
         </Row>
         </ContainerFullWidth>
-      </form>
-      <TextareaDebug value={{ item, option }} />
+      </form>      <TextareaDebug value={{ item, option }} />
     </div>
   );
 };
@@ -163,6 +177,7 @@ const mapStateToProps = (state) => {
   return {
     item: state.task,
     option: state.options?.task,
+    subtasks: state.subtasks,
   };
 };
 
@@ -172,7 +187,7 @@ export const Task = connect(mapStateToProps, {
   actTask_U,
   actTask_D,
   actTask_Clear,  
-  actOption_L 
+  actOption_L,
 })(Task0);
 
 export default Task;

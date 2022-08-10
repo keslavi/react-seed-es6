@@ -1,7 +1,8 @@
 import React, { 
 //  useRef, 
 //  InputRef, 
-//  useState 
+//  useState
+  forwardRef,
 } from "react";
 import { Controller } from "react-hook-form";
 import _ from "lodash";
@@ -38,7 +39,6 @@ export const Input = (props) => {
     ? CtlAutocompleteMulti
     : CtlTextField;
 
-  //InputRef={InputRef}
   return (
     <>
       <Col xs={xs || 4}>
@@ -90,7 +90,7 @@ const cleanParentProps = (props) => {
   return ret;
 };
 
-const CtlTextField = (props) => {
+const CtlTextField = forwardRef((props,ref) => {
   const label = props.label || props.name;
   return (
     <>
@@ -99,18 +99,18 @@ const CtlTextField = (props) => {
       <input {...props} />
     </>
   );
-};
+});
 
-const CtlDate = (props) => {
+const CtlDate = forwardRef((props,ref) => {
   return <span>not implemented</span>;
-};
-const CtlCheckbox = (props) => {
+});
+const CtlCheckbox = forwardRef((props,ref) => {
   return <span>not implemented</span>;
-};
-const CtlSelect = (props) => {
+});
+const CtlSelect = forwardRef((props,ref) => {
   return <span>not implemented</span>;
-};
-const CtlAutocomplete = (props) => {
+});
+const CtlAutocomplete = forwardRef((props,ref) => {
   const label = props.label || props.name;
   const options = props.options;
 
@@ -130,7 +130,7 @@ const CtlAutocomplete = (props) => {
       </select>
     </>
   );
-};
-const CtlAutocompleteMulti = (props) => {
+});
+const CtlAutocompleteMulti = forwardRef((props,ref) => {
   return <span>not implemented</span>;
-};
+});

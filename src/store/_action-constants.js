@@ -17,6 +17,14 @@ export const ACT = {
         list: "task.list",
         clearSelected: "task.clearSelected"
     },
+    subtask: {
+        create: "subtask.create",
+        retrieve: "subtask.retrieve",
+        update: "subtask.update",
+        delete: "subtask.delete", 
+        list: "subtask.list",
+        clearSelected: "subtask.clearSelected"
+    },
     options: {
         list: "options.list"
     }
