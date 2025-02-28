@@ -1,6 +1,6 @@
 
-# react-seed-es6+ 
-straight javascript seed starter project with redux, notifications, middleware in place
+# react seed 2024
+straight javascript seed starter project with zustand, notifications, form validation
 
 ## quickstart !important  
 
@@ -102,13 +102,9 @@ For more complex examples that use the redux store and mockups, look at todo*.te
 
 - axios
 - lodash (array and null handling)
-- moment (better date handling)
+- luxon (better date handling)
 - sass (adds support for scss files)
 - react-toastify (adds notification pop ups)
-- redux
-- redux-promise (redux middleware for simple api calls)
-- redux-saga (middleware for more complex api calls or data massaging)
+- zustand
 - react-hook-form
 - yup 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,3 +1,2 @@
-export * from './task-section';
-export * from './dev-section';
-export * from './home';
+export * from "./about/about";
+export * from "./home/home";

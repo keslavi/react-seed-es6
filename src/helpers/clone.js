@@ -1,4 +1,3 @@
-
 /**
  * 
  * @description creates a deep clone: alias for json.parse(stringify)

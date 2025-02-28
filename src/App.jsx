@@ -1,20 +1,19 @@
+//import './app.css';
+import { Outlet as RouterOutlet } from "react-router-dom";
+import { Container } from "@/components";
+import { Header } from "./components/header";
 
-import './App.css';
-import { Outlet as RouterOutlet } from 'react-router-dom';
-import { /*Container,*/ContainerFullWidth } from 'components';
+export const App = (props) => {
+  const { menu } = props;
 
-import { Header } from 'components/header';
-import { menu } from './router';
-
-function App() {
   return (
-    <div data-testid='app'>
+    <>
       <Header menu={menu} />
-      <ContainerFullWidth>
+      <Container>
         <RouterOutlet />
-      </ContainerFullWidth>
-    </div>
+      </Container>
+    </>
   );
-}
+};
 
 export default App;

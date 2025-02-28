@@ -1,0 +1,30 @@
+.navbar {
+  border-bottom: 1px solid grey;
+  //background-color: #282c34;
+  color: #022366;
+  //min-height: 100vh;
+  max-height: 30px; 
+  display: flex;
+  flex-direction: column;
+  //align-items: flex-end;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.navbar ul {
+  list-style-type:none;
+}
+
+.navbar li {
+  display: inline;
+  padding-right: 20px;
+}
+
+.navbar li a {
+  color: #022366;
+  text-decoration: none;
+}
+
+.navbar a:hover{
+  text-decoration: underline;
+}

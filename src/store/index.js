@@ -1,4 +1,8 @@
-export * from './_action-constants';
-export * from './actions';
-//export * from './store'; //not needed at this level
+import store from './store';
+export * from './store';
+export * from './api';
+
+export default store;
+
+
 

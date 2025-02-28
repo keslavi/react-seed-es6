@@ -1,27 +1,27 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import promise from 'redux-promise';
-import createSagaMiddleware from 'redux-saga';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-import rootReducer from './reducers';
-import rootSaga from './sagas';
+import api from "./slice/api-slice"; //http request counter
+import option from "./slice/option-slice";
+import task from "./slice/task-slice";
 
-// import { createLogger } from 'redux-logger';
-// const logger = createLogger();
+export const useStoreDangerously = create(devtools((...a) => ({
+    ...api(...a),//http request counter
+    ...option(...a),
+    ...task(...a),
+  }))
+);
 
-const saga = createSagaMiddleware();
+export const useStore=useStoreDangerously;
 
-export const store =
-    createStore(
-        rootReducer,
-        compose(
-            //i don't like having logger running all the time
-            //keep the console clean as possible to assist in debugging
-            applyMiddleware(promise, saga) //, logger)
-        )
-    );
+const createSelectors= _store=>{
+  const store=_store;
+  store.use={};
+  for (const k of Object.keys(store.getState())){
+    store.use[k]=()=>store(s=>s[k]);
+  }
+  return store;
+}
 
-saga.run(rootSaga);
-
+export const store=createSelectors(useStoreDangerously);
 export default store;
-
-

@@ -1,0 +1,72 @@
+{
+    "task": {
+        "status": [
+            {
+                "key": 0,
+                "text": "pending"
+            },
+            {
+                "key": 1,
+                "text": "in progress"
+            },
+            {
+                "key": 2,
+                "text": "completed"
+            },
+            {
+                "key": 3,
+                "text": "cancelled"
+            }
+        ],
+        "result": [
+            {
+                "key": 0,
+                "text": ""
+            },
+            {
+                "key": 1,
+                "text": "good"
+            },
+            {
+                "key": 2,
+                "text": "not good"
+            },
+            {
+                "key": 3,
+                "text": "who knows"
+            }
+        ]
+    },
+    "contact": {
+        "type": [
+            {
+                "key": 1,
+                "text": "Business"
+            },
+            {
+                "key": 2,
+                "text": "Personal"
+            }
+        ],
+        "profileKeyMl": [
+            {
+                "key": 1,
+                "text": "ml value1"
+            },
+            {
+                "key": 2,
+                "text": "ml value2"
+            }
+        ],
+        "profileKeyPb": [
+            {
+                "key": 1,
+                "text": "pb value1"
+            },
+            {
+                "key": 2,
+                "text": "pb value2"
+            }
+        ]
+    }
+}
